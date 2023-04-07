@@ -236,3 +236,45 @@ footer {
 .join-us-btn {
 	margin: auto;
 }
+
+.about-section {
+	background-color: #2C514C;
+	padding: 0 5%;
+}
+
+.about-section__row {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 3rem;
+	padding: 4rem 0;;
+}
+
+.image-column {
+	background: url('https://images.unsplash.com/photo-1541252260730-0412e8e2108e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=674&q=80') no-repeat center;
+	background-size: cover;
+	border: 0.8rem solid #fca311;
+	border-radius: 1rem;
+}
+
+.about-column {
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;	
+}
+
+.about-column .about-header {
+	color: #fca311;
+	font-size: 1.4rem;
+}
+
+.event-section {
+	width: 100%;
+	padding: 4rem 5%;
+}
+
+.event-header {
+	font-size: 2.4rem;
+	color: #fca311;
+	text-align: center;
+}
