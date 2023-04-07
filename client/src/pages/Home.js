@@ -1,8 +1,7 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import EventsList from '../components/Events/EventsList';
 
-function Home() {
+function Home({ events }) {
 
     return (
         <div className='home-container'>
@@ -43,9 +42,9 @@ function Home() {
             </div>
             <div className='event-section'>
                 <header>
-                    <h1 className='event-header'>Wydarzenia w krótce</h1>
+                    <h1 className='event-header'>Wydarzenia wkrótce</h1>
                 </header>
-                
+                <EventsList events={events} />
             </div>
         </div>
     )

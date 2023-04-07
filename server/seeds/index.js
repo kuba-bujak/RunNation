@@ -24,7 +24,8 @@ const seedDB = async () => {
             location: events[i].location,
             date: new Date(events[i].date),
             description: events[i].description,
-            image: events[i].image
+            image: events[i].image,
+            rating: events[i].rating
         });
         await event.save();
     }
