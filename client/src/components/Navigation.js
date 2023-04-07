@@ -17,7 +17,7 @@ function Navigation() {
 				  <Link className="nav-link link" to={'/wydarzenia'}>Wydarzenia</Link>
 				</li>
 				<li className="nav-item">
-				  <Link className="nav-link link" to={'/blog'}>Blog</Link>
+				  <Link className="nav-link link" to={'/kursy'}>Kursy</Link>
 				</li>
 				<li className="nav-item">
 					<Link className="nav-link link" to={'/galeria'}>Galeria</Link>
