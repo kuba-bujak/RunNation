@@ -11,6 +11,7 @@ html {
 body {
     min-height: 100vh;
     font-family: 'Lato', sans-serif;
+    color: #F1E9DB;
 }
 
 a {
@@ -33,7 +34,7 @@ ul {
     top: 0;
     left: 0;
     z-index: 100;
-    padding: 0 1rem;
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,7 +67,7 @@ ul {
 	/* justify-content: center; */
 }
 
-.nav-item a {
+.nav-item link {
 	transition: all 0.3s ease-in-out;
 	text-transform: uppercase;
 	font-weight: bolder;
@@ -74,7 +75,7 @@ ul {
 	color: white;
 }
 
-.nav-item:hover a{
+.nav-item:hover link{
 	color: #fca311;
 }
 
@@ -94,4 +95,95 @@ ul {
 	margin: 5px auto;
 	transition: all 0.3s ease-in-out;
 	background-color: white;
+}
+
+/* Footer */
+
+footer {
+	background-color: #07020D;
+	width: 100%;
+    padding: 0 5%;
+}
+
+.footer-row {
+	padding: 2em 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-brand__title {
+	font-size: 1.1em;
+	width: fit-content;
+	border: 2px solid #fca311;
+	color: #fca311;
+	padding: 0.3rem 0.6rem;
+	border-radius: 10px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bolder;
+	transition: all 0.3s ease-in-out;
+}
+
+.footer-brand__title:hover {
+	border-color: white;
+	color: white;
+}
+
+.footer-menu {
+	display: flex;
+	flex-direction: column;
+	font-size: 0.8em;
+	gap: 0.6em;
+}
+
+.footer-menu .footer-menu__item a {
+	transition: all 0.3S ease-in-out;
+}
+
+.footer-menu .footer-menu__item a:hover {
+	color: #fca311;
+}
+
+.social-container {
+	display: flex;
+	gap: 1em;
+	font-size: 1.4em;
+	margin-bottom: 1em;
+}
+
+.social-container a {
+	transition: all 0.3s ease-in-out;
+}
+
+.social-container a:hover {
+	color: #fca311;
+}
+
+.contact-container {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	gap: 0.4em;
+}
+
+.contact-container a {
+	transition: all 0.3s ease-in-out;
+}
+
+.contact-container a:hover {
+	color: #fca311;
+}
+
+.contact-container i {
+	margin-right: 0.4em;
+}
+
+.copyright {
+	text-align: center;
+	padding: 1em;
+	background-color: 07020D;
+	font-size: 0.8em;
+}
+
+.copyright a {
+	color: #fca311;
 }
