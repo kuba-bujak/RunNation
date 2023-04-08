@@ -25,6 +25,12 @@ app.get('/api/events', async (req, res) => {
     res.json(events);
 })
 
+app.get('/api/events/:id', async (req, res) => {
+    const { id } = req.params;
+    const event = await Events.findById(id);
+    res.json(event);
+})
+
 const PORT = 3001;
 
 app.listen(PORT, () => {
