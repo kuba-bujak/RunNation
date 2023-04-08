@@ -45,6 +45,31 @@ function Home({ events }) {
                     <h1 className='event-header'>Wydarzenia wkrótce</h1>
                 </header>
                 <EventsList events={events} />
+                <Link to={{}} className='btn-secondary events-btn shadow'>
+                    Zobacz więcej
+                </Link>
+            </div>
+            <div className='courses-section'>
+                <header>
+                    <h1 className='courses-header'>Ofertę kursów i szkoleń prowadzimy dla:</h1>
+                </header>
+                <ul className='courses-list'>
+                    <li className='courses-list__item'>trenerów</li>
+                    <li className='courses-list__item'>zawodników</li>
+                    <li className='courses-list__item'>amatorów</li>
+                </ul>
+                <Link to={{}} className='btn-primary courses-btn'>
+                    Zobacz więcej
+                </Link>
+            </div>
+            <div className='event-section'>
+                <header>
+                    <h1 className='event-header'>Galeria</h1>
+                </header>
+                <EventsList events={events} />
+                <Link to={{}} className='btn-secondary events-btn shadow'>
+                    Zobacz więcej
+                </Link>
             </div>
         </div>
     )

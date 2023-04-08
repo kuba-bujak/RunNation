@@ -28,6 +28,12 @@ p {
 	line-height: 1.4rem;	
 }
 
+.shadow {
+	-webkit-box-shadow: 0px 4px 10px 0px rgba(38, 38, 41, 1);
+	-moz-box-shadow: 0px 4px 10px 0px rgba(38, 38, 41, 1);
+	box-shadow: 0px 4px 10px 0px rgba(38, 38, 41, 1);
+}
+
 /* Navigation */
 
 .navigation {
@@ -107,7 +113,6 @@ p {
 footer {
 	background-color: #2C514C;
 	width: 100%;
-    margin-top: 20vh;
 }
 
 .footer-row {
@@ -237,6 +242,38 @@ footer {
 	border-color: #fca311;
 }
 
+.btn-secondary {
+	font-size: 1.2rem;
+	border: 2px solid transparent;
+	border-radius: 1rem;
+	width: fit-content;
+	padding: 0.4rem 1rem;
+	transition: all 0.5s ease;
+	background-color: #2C514C;
+}
+
+.btn-secondary:hover {
+	color: #2C514C;
+	border-color: #2C514C;
+	background-color: transparent;
+}
+
+.btn-primary {
+	font-size: 1.2rem;
+	border: 2px solid #fca311;
+	border-radius: 1rem;
+	width: fit-content;
+	padding: 0.4rem 1rem;
+	transition: all 0.5s ease;
+	color: #fca311;
+}
+
+.btn-primary:hover {
+	background-color: #fca311;
+	color: white;
+	border-color: transparent;
+}
+
 .join-us-btn {
 	margin: auto;
 }
@@ -275,6 +312,7 @@ footer {
 .event-section {
 	width: 100%;
 	padding: 4rem 5%;
+	text-align: center;
 }
 
 .event-header {
@@ -288,6 +326,7 @@ footer {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 2rem;
+	margin-bottom: 4rem;
 }
 
 .card {
@@ -295,9 +334,7 @@ footer {
 	border-radius: 10px;
 	color: #F1E9DB;
 	position: relative;
-	-webkit-box-shadow: 8px 8px 24px 0px rgba(18, 41, 50, 1);
-	-moz-box-shadow: 8px 8px 24px 0px rgba(18, 41, 50, 1);
-	box-shadow: 8px 8px 24px 0px rgba(18, 41, 50, 1);
+	text-align: left;
 }
 
 .card-image__figure--image {
@@ -306,7 +343,7 @@ footer {
 }
 
 .card-content {
-	padding: 1rem;
+	padding: 2rem;
 }
 
 .media-content {
@@ -339,4 +376,32 @@ footer {
 	right: 1rem;
 	color: #fca311;
 	font-size: 1.4rem;
+}
+
+.courses-section {
+	background: #00000098 url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80') no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-blend-mode: darken;
+	height: 40vh;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.courses-header {
+	color: #fca311;
+	margin-bottom: 2rem;
+}
+
+.courses-list {
+	list-style-type: disc;
+	list-style-position: inside;
+	font-size: 1.4rem;
+	margin-bottom: 1rem;
+}
+
+.courses-list__item {
+	margin-bottom: 0.4rem;
 }

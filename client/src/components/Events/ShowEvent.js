@@ -7,7 +7,7 @@ function ShowEvent({ event }) {
     }
 
     return (
-        <div className="card">
+        <div className="card shadow">
             <div className="ratings">
                 {ratings}
             </div>

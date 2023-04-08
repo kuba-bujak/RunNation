@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Navigation() {
     return (
-        <nav className="navigation">
+        <nav className="navigation shadow">
 
 		  <Link className="navbar-brand" to={'/'}>RunNation</Link>
 
