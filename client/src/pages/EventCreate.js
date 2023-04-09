@@ -8,8 +8,13 @@ function EventCreate({ onCreate }) {
     const [rating, setRating] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
+    const [day, setDay] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
 
-    const createSportEvent = async (title, location, image, rating, description, date) => {
+    const createSportEvent = async (title, location, image, rating, description, day, month, year) => {
+        const date =  new Date(`${year}-${month}-${day}`);
+        console.log(date);
           const response = await axios.post('/api/events/new', {
             title,
             location,
@@ -36,32 +41,88 @@ function EventCreate({ onCreate }) {
     const handleChangeDescription = (event) => {
         setDescription(event.target.value)
     }
-    const handleChangeDate = (event) => {
-        setDate(event.target.value)
+
+    const handleChangeDay = (event) => {
+        setDay(event.target.value)
+    }
+    const handleChangeMonth = (event) => {
+        setMonth(event.target.value)
+    }
+    const handleChangeYear = (event) => {
+        setYear(event.target.value)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        createSportEvent(title, location, image, rating, description, date);
+        createSportEvent(title, location, image, rating, description, day, month, year);
         setTitle('');
         setLocation('');
         setImage('');
         setRating('');
         setDescription('');
-        setDate('');
+        setDay('');
+        setMonth('');
+        setYear('');
     } 
 
 
     return (
-        <div className="event-section">
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={title} onChange={handleChangeTitle} placeholder="title"/>
-                <input type="text" value={location} onChange={handleChangeLocation} placeholder="location"/>
-                <input type="url" value={image} onChange={handleChangeImage} placeholder="image"/>
-                <input type="number" value={rating} onChange={handleChangeRating} placeholder="rating"/>
-                <textarea value={description} onChange={handleChangeDescription}></textarea>
-                <input type="date" value={date} onChange={handleChangeDate} placeholder="data"/>
-                <button type="submit">Stwórz</button>
+        <div className="form-section">
+            <form className="container shadow" onSubmit={handleSubmit}>
+                 <header className="form-header">
+                    <h1>Dodaj wydarzenie</h1>
+                </header>
+                <div className="row">
+                <h4>Informacje ogólne</h4>
+                <div className="input-group input-group-icon">
+                    <input type="text" placeholder="Tytuł" value={title} onChange={handleChangeTitle} />
+                    <div className="input-icon"><i className="fa fa-user"></i></div>
+                </div>
+                <div className="input-group input-group-icon">
+                    <input type="text" placeholder="Lokalizacja" value={location} onChange={handleChangeLocation} />
+                    <div className="input-icon"><i class="fa-solid fa-location-dot"></i></div>
+                </div>
+                <div className="input-group input-group-icon">
+                    <textarea placeholder="Opis" rows={5} value={description} onChange={handleChangeDescription}></textarea>
+                    {/* <input type="text" placeholder="Opis"/> */}
+                    <div className="input-icon"><i class="fa-solid fa-message"></i></div>
+                </div>
+                </div>
+                <div className="row">
+                <div className="col-half">
+                    <h4>Termin</h4>
+                    <div className="input-group">
+                    <div className="col-third">
+                        <input type="text" placeholder="DD" value={day} onChange={handleChangeDay} />
+                    </div>
+                    <div className="col-third">
+                        <input type="text" placeholder="MM" value={month} onChange={handleChangeMonth} />
+                    </div>
+                    <div className="col-third">
+                        <input type="text" placeholder="YYYY" value={year} onChange={handleChangeYear}/>
+                    </div>
+                    </div>
+                </div>
+                <div className="col-half">
+                    <h4>Ranga</h4>
+                    <div className="input-group">
+                    <select onChange={handleChangeRating} value={rating}>
+                        <option value={0}>II</option>
+                        <option value={1}>I</option>
+                        <option value={2}>M</option>
+                        <option value={3}>MM</option>
+                    </select>
+                    </div>
+                </div>
+                </div>
+                <div className="row">
+                <h4>Zdjęcie</h4>
+                <div className="input-group input-group-icon">
+                    <input type="url" placeholder="Zdjęcie" value={image} onChange={handleChangeImage} />
+                    <div className="input-icon"><i class="fa-solid fa-image"></i></div>
+                </div>
+                </div>
+                <button type="submit" className="btn form-btn">Dodaj wydarzenie</button>
             </form>
         </div>
     )

@@ -27,9 +27,7 @@ app.get('/api/events', async (req, res) => {
 
 app.post('/api/events/new', async (req, res) => {
     const data = req.body;
-    console.log(data);
     const event = new Events(data);
-    console.log(event);
     await event.save();
     res.send('Created');
 })

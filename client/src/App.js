@@ -16,51 +16,63 @@ import EventEdit from "./pages/EventEdit";
 
 function App() {
     const [events, setEvents] = useState([]);
+    const [sortedEvents, setSortedEvents] = useState([]);
+    const [futureAllEvents, setFutureAllEvents] = useState([]);
 
 
     const fetchEvents = async () => {
         const response = await axios.get('/api/events');
 
         setEvents(response.data);
+        sortEvents(response.data);
     } 
 
     useEffect(() => {
-        fetchEvents();
+        fetchEvents()
     }, []);
 
-    let futureEvents = events.filter(event => new Date(event.date) > new Date());
+    const sortEvents = (events) => {
+        const futureEvents = events.filter(event => new Date(event.date) > new Date());
 
-    futureEvents.sort((a,b) => {
-        if (b.rating !== a.rating) {
-            return b.rating - a.rating;
-        } else {
-            return new Date(a.date) - new Date(b.date)
-        }
-    });
+        futureEvents.sort((a,b) => {
+            if (b.rating !== a.rating) {
+                return b.rating - a.rating;
+            } else {
+                return new Date(a.date) - new Date(b.date)
+            }
+        });
+    
+        const topEvents = futureEvents.slice(0,6);
+    
+        const formattedEvents = topEvents.map(event => {
+            const date = new Date(event.date);
+            const month = date.toLocaleString('default', { month: 'short' });
+            const day = date.getDate();
+            const year = date.getFullYear();
+            return {
+                ...event,
+                date: `${day} ${month} ${year}`
+            };
+        });
 
-    let topEvents = futureEvents.slice(0,6);
+        setSortedEvents(formattedEvents);
+    
+        const futureAllEvents = events
+            .filter(event => new Date(event.date) > new Date())
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    let formattedEvents = topEvents.map(event => {
-        const date = new Date(event.date);
-        const month = date.toLocaleString('default', { month: 'short' });
-        const day = date.getDate();
-        const year = date.getFullYear();
-        return {
-            ...event,
-            date: `${day} ${month} ${year}`
-        };
-    });
-
-    let futureAllEvents = events
-        .filter(event => new Date(event.date) > new Date())
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
+       setFutureAllEvents(futureAllEvents);
+    }
+    console.log(sortedEvents);
+    console.log(futureAllEvents);
+   
 
     return (
         <div>
             <Router>
                 <Navigation />
                 <Routes>
-                    <Route exact path="/" element={<Home events={formattedEvents} />} />
+                    <Route exact path="/" element={<Home events={sortedEvents} />} />
                     <Route path="/o-nas" element={<About />} />
                     <Route path="/wydarzenia" element={<Events events={futureAllEvents} />} />
                     <Route path="/wydarzenia/:id" element={<EventDetails />} />
