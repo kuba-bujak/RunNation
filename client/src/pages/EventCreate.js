@@ -7,14 +7,12 @@ function EventCreate({ onCreate }) {
     const [image, setImage] = useState('');
     const [rating, setRating] = useState('');
     const [description, setDescription] = useState('');
-    const [date, setDate] = useState('');
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
 
     const createSportEvent = async (title, location, image, rating, description, day, month, year) => {
         const date =  new Date(`${year}-${month}-${day}`);
-        console.log(date);
           const response = await axios.post('/api/events/new', {
             title,
             location,
@@ -80,12 +78,11 @@ function EventCreate({ onCreate }) {
                 </div>
                 <div className="input-group input-group-icon">
                     <input type="text" placeholder="Lokalizacja" value={location} onChange={handleChangeLocation} />
-                    <div className="input-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div className="input-icon"><i className="fa-solid fa-location-dot"></i></div>
                 </div>
                 <div className="input-group input-group-icon">
                     <textarea placeholder="Opis" rows={5} value={description} onChange={handleChangeDescription}></textarea>
-                    {/* <input type="text" placeholder="Opis"/> */}
-                    <div className="input-icon"><i class="fa-solid fa-message"></i></div>
+                    <div className="input-icon"><i className="fa-solid fa-message"></i></div>
                 </div>
                 </div>
                 <div className="row">
@@ -119,7 +116,7 @@ function EventCreate({ onCreate }) {
                 <h4>Zdjęcie</h4>
                 <div className="input-group input-group-icon">
                     <input type="url" placeholder="Zdjęcie" value={image} onChange={handleChangeImage} />
-                    <div className="input-icon"><i class="fa-solid fa-image"></i></div>
+                    <div className="input-icon"><i className="fa-solid fa-image"></i></div>
                 </div>
                 </div>
                 <button type="submit" className="btn form-btn">Dodaj wydarzenie</button>

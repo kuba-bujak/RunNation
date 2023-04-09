@@ -62,10 +62,7 @@ function App() {
             .sort((a, b) => new Date(a.date) - new Date(b.date));
 
        setFutureAllEvents(futureAllEvents);
-    }
-    console.log(sortedEvents);
-    console.log(futureAllEvents);
-   
+    }  
 
     return (
         <div>

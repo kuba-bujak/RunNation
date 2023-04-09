@@ -38,6 +38,12 @@ app.get('/api/events/:id', async (req, res) => {
     res.json(event);
 })
 
+app.put('/api/events/:id', async (req, res) => {
+    const{ id } = req.params;
+    const updatedEvent = await Events.findByIdAndUpdate(id, req.body);
+    res.json(updatedEvent);
+})
+
 const PORT = 3001;
 
 app.listen(PORT, () => {
