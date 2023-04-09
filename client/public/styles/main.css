@@ -344,6 +344,7 @@ footer {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 2rem;
 	margin-bottom: 4rem;
+	width: 100%;
 }
 
 .card {
@@ -352,6 +353,7 @@ footer {
 	color: #F1E9DB;
 	position: relative;
 	text-align: left;
+	width: 100%;
 }
 
 .card-image__figure--image {
@@ -461,8 +463,10 @@ footer {
 	display: flex;
 	padding: 1rem;
 	gap: 2rem;
-	border: 1px solid #2C514C;
-	border-radius: 10px;
+}
+
+.comment-container:not(:last-child) {
+	border-bottom: 1px solid #fca311;
 }
 
 .comment-container__image {

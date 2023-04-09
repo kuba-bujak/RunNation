@@ -14,6 +14,7 @@ function EventDetails() {
     };
 
     useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         fetchEventData();
     }, [id]);
 
@@ -50,7 +51,7 @@ function EventDetails() {
                         <time dateTime={event.date}>{event.date}</time>
                     </div>
                     <div className="card-footer">
-                        <Link to={{}} className="event-btn edit-btn">Edytuj</Link>
+                        <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
                         <Link to={{}} className="event-btn delete-btn">Usuń</Link>
                     </div>
                 </div>

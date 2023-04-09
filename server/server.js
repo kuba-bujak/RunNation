@@ -25,6 +25,15 @@ app.get('/api/events', async (req, res) => {
     res.json(events);
 })
 
+app.post('/api/events/new', async (req, res) => {
+    const data = req.body;
+    console.log(data);
+    const event = new Events(data);
+    console.log(event);
+    await event.save();
+    res.send('Created');
+})
+
 app.get('/api/events/:id', async (req, res) => {
     const { id } = req.params;
     const event = await Events.findById(id);

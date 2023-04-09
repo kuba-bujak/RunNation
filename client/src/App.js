@@ -10,8 +10,9 @@ import Courses from "./pages/Courses";
 import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
 import Register from "./pages/Register";
-import ShowEvent from "./components/Events/ShowEvent";
 import EventDetails from "./components/Events/EventDetails";
+import EventCreate from "./pages/EventCreate";
+import EventEdit from "./pages/EventEdit";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -27,7 +28,7 @@ function App() {
         fetchEvents();
     }, []);
 
-    const futureEvents = events.filter(event => new Date(event.date) > new Date());
+    let futureEvents = events.filter(event => new Date(event.date) > new Date());
 
     futureEvents.sort((a,b) => {
         if (b.rating !== a.rating) {
@@ -37,9 +38,9 @@ function App() {
         }
     });
 
-    const topEvents = futureEvents.slice(0,6);
+    let topEvents = futureEvents.slice(0,6);
 
-    const formattedEvents = topEvents.map(event => {
+    let formattedEvents = topEvents.map(event => {
         const date = new Date(event.date);
         const month = date.toLocaleString('default', { month: 'short' });
         const day = date.getDate();
@@ -50,7 +51,7 @@ function App() {
         };
     });
 
-    const futureAllEvents = events
+    let futureAllEvents = events
         .filter(event => new Date(event.date) > new Date())
         .sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -66,8 +67,10 @@ function App() {
                     <Route path="/kursy" element={<Courses />} />
                     <Route path="/kontakt" element={<Contact />} />
                     <Route path="/rejestracja" element={<Register />} />
+                    <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={setEvents} />} />
+                    <Route path="/wydarzenia/:id/edycja" element={<EventEdit />} />
                 </Routes>
-                <Footer />
+                <Footer />   
             </Router>
         </div>
        
