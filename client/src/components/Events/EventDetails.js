@@ -7,20 +7,26 @@ function EventDetails() {
     const [event, setEvent] = useState({});
     const { id } = useParams();
 
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        fetchEventData();
+    }, [id]);
+
+    
     const fetchEventData = async () => {
         const response = await axios.get(`/api/events/${id}`);
 
         setEvent(response.data);
     };
 
-    useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-        fetchEventData();
-    }, [id]);
-
     let ratings = []
     for (let i = 0; i < event.rating; i++) {
         ratings.push(<AiFillStar />)
+    }
+
+    const deleteEvent = (id) => {
+        const response = axios.delete(`/api/events/${id}`);
+        console.log(response);
     }
 
     return (
@@ -52,7 +58,7 @@ function EventDetails() {
                     </div>
                     <div className="card-footer">
                         <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
-                        <Link to={{}} className="event-btn delete-btn">Usuń</Link>
+                        <button onClick={() => deleteEvent(id)} className="event-btn delete-btn">Usuń</button>
                     </div>
                 </div>
             </div>

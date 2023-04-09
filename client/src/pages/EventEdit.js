@@ -143,7 +143,7 @@ function EventEdit() {
                     <div className="input-icon"><i className="fa-solid fa-image"></i></div>
                 </div>
                 </div>
-                <button type="submit" className="btn form-btn">Dodaj wydarzenie</button>
+                <button type="submit" className="btn form-btn">Edytuj wydarzenie</button>
             </form>
         </div>
     )

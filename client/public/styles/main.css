@@ -284,6 +284,9 @@ footer {
 
 .delete-btn {
 	background-color: red;
+	color: white;
+	border: none;
+	cursor: pointer;
 }
 
 .edit-btn {

@@ -44,6 +44,12 @@ app.put('/api/events/:id', async (req, res) => {
     res.json(updatedEvent);
 })
 
+app.delete('/api/events/:id', async (req, res) => {
+    const { id } = req.params;
+    await Events.findByIdAndDelete(id);
+    res.json({ success: true });
+})
+
 const PORT = 3001;
 
 app.listen(PORT, () => {
