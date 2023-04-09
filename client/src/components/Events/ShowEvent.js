@@ -11,10 +11,7 @@ function ShowEvent({ event }) {
             <div className="ratings">
                 {ratings}
             </div>
-            <div className="card-image">
-                <figure className="card-image__figure">
-                    <img src={event.image} alt={event.title} className="card-image__figure--image" />
-                </figure>
+            <div className="card-image" style={{ backgroundImage: `url(${event.image})` }}>
             </div>
             <div className="card-content">
                 <div className="media">
