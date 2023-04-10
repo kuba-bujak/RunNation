@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { AiFillStar } from "react-icons/ai";
 function EventDetails({ onDelete }) {
     const [event, setEvent] = useState({});
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
@@ -28,6 +29,7 @@ function EventDetails({ onDelete }) {
         const response = axios.delete(`/api/events/${id}`);
         console.log(response);
         onDelete(id);
+        navigate(`/wydarzenia`, { replace: true });
     }
 
     return (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function EventCreate({ onCreate }) {
     const [title, setTitle] = useState('');
@@ -10,6 +11,8 @@ function EventCreate({ onCreate }) {
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
+
+    const navigate = useNavigate();
 
     const createSportEvent = async (title, location, image, rating, description, day, month, year) => {
         const date =  new Date(`${year}-${month}-${day}`);
@@ -22,6 +25,10 @@ function EventCreate({ onCreate }) {
             date
           })
         onCreate({title, location, image, rating, description, date});
+        setTimeout(() => {
+            navigate(`/wydarzenia`, { replace: true });
+        }, 3000);
+        
     }
 
     const handleChangeTitle = (event) => {

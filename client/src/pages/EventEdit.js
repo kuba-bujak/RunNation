@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function EventEdit({ onEdit }) {
     const [title, setTitle] = useState('');
@@ -13,6 +13,7 @@ function EventEdit({ onEdit }) {
     const [year, setYear] = useState('');
     
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const setEvent = (event) => {
         setTitle(event.title);
@@ -48,6 +49,7 @@ function EventEdit({ onEdit }) {
           })
 
           onEdit(id, {title, location, date, description, image, rating});
+          navigate(`/wydarzenia/${id}`, { replace: true });
     }
 
     const handleChangeTitle = (event) => {
