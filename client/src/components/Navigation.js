@@ -26,7 +26,7 @@ function Navigation() {
 					<Link className="nav-link" to={'/kontakt'} >Kontakt</Link>
 				</li>
 				<li className="nav-item">
-					<Link className="nav-link" to={'/rejestracja'}>Rejestracja</Link>
+					<Link className="nav-link" to={'/logowanie'}>Logowanie</Link>
 				</li>
 			 </ul>
 

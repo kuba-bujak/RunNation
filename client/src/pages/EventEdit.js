@@ -94,22 +94,22 @@ function EventEdit({ onEdit }) {
 
     return (
         <div className="form-section">
-            <form className="container shadow" onSubmit={handleSubmit}>
+            <form className="container shadow" onSubmit={handleSubmit} noValidate>
                  <header className="form-header">
                     <h1>Edytuj #{title}</h1>
                 </header>
                 <div className="row">
                 <h4>Informacje ogólne</h4>
                 <div className="input-group input-group-icon">
-                    <input type="text" placeholder="Tytuł" value={title} onChange={handleChangeTitle} />
+                    <input type="text" placeholder="Tytuł" value={title} onChange={handleChangeTitle} required/>
                     <div className="input-icon"><i className="fa fa-user"></i></div>
                 </div>
                 <div className="input-group input-group-icon">
-                    <input type="text" placeholder="Lokalizacja" value={location} onChange={handleChangeLocation} />
+                    <input type="text" placeholder="Lokalizacja" value={location} onChange={handleChangeLocation} required/>
                     <div className="input-icon"><i className="fa-solid fa-location-dot"></i></div>
                 </div>
                 <div className="input-group input-group-icon">
-                    <textarea placeholder="Opis" rows={5} value={description} onChange={handleChangeDescription}></textarea>
+                    <textarea placeholder="Opis" rows={5} value={description} onChange={handleChangeDescription} required></textarea>
                     <div className="input-icon"><i className="fa-solid fa-message"></i></div>
                 </div>
                 </div>
@@ -118,20 +118,20 @@ function EventEdit({ onEdit }) {
                     <h4>Termin</h4>
                     <div className="input-group">
                     <div className="col-third">
-                        <input type="text" placeholder="DD" value={day} onChange={handleChangeDay} />
+                        <input type="text" placeholder="DD" value={day} onChange={handleChangeDay} required/>
                     </div>
                     <div className="col-third">
-                        <input type="text" placeholder="MM" value={month} onChange={handleChangeMonth} />
+                        <input type="text" placeholder="MM" value={month} onChange={handleChangeMonth} required/>
                     </div>
                     <div className="col-third">
-                        <input type="text" placeholder="YYYY" value={year} onChange={handleChangeYear}/>
+                        <input type="text" placeholder="YYYY" value={year} onChange={handleChangeYear} required/>
                     </div>
                     </div>
                 </div>
                 <div className="col-half">
                     <h4>Ranga</h4>
                     <div className="input-group">
-                    <select onChange={handleChangeRating} value={rating}>
+                    <select onChange={handleChangeRating} value={rating} required>
                         <option value={0}>II</option>
                         <option value={1}>I</option>
                         <option value={2}>M</option>

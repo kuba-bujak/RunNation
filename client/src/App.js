@@ -29,7 +29,7 @@ function App() {
 
     useEffect(() => {
         fetchEvents()
-    }, []);
+    }, [events]);
 
     const sortEvents = (events) => {
         const futureEvents = events.filter(event => new Date(event.date) > new Date());

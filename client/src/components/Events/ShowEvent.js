@@ -25,7 +25,11 @@ function ShowEvent({ event }) {
                     </div>
                 </div>
                 <div className="content">
-                    {event.description.slice(0, 100)}...
+                    {event.description.length > 100 ?
+                        <p>{event.description.slice(0, 100)}...</p>
+                        :
+                        <p>{event.description}</p>
+                    }
                     <br />
                     <time dateTime={event.date}>{event.date}</time>
                 </div>
