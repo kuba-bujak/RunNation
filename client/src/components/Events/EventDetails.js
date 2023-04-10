@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 
-function EventDetails() {
+function EventDetails({ onDelete }) {
     const [event, setEvent] = useState({});
     const { id } = useParams();
 
@@ -27,6 +27,7 @@ function EventDetails() {
     const deleteEvent = (id) => {
         const response = axios.delete(`/api/events/${id}`);
         console.log(response);
+        onDelete(id);
     }
 
     return (
@@ -58,7 +59,7 @@ function EventDetails() {
                     </div>
                     <div className="card-footer">
                         <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
-                        <button onClick={() => deleteEvent(id)} className="event-btn delete-btn">Usuń</button>
+                        <button onClick={() => deleteEvent(event._id)} className="event-btn delete-btn">Usuń</button>
                     </div>
                 </div>
             </div>

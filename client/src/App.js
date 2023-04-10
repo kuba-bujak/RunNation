@@ -56,12 +56,12 @@ function App() {
         });
 
         setSortedEvents(formattedEvents);
-    
+        
         const futureAllEvents = events
             .filter(event => new Date(event.date) > new Date())
             .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-       setFutureAllEvents(futureAllEvents);
+        setFutureAllEvents(futureAllEvents);
     } 
     
     const createEvent = (newEvent) => {
@@ -80,6 +80,36 @@ function App() {
         sortEvents(updatedEvents);
     }
 
+    const editEvent = (id, editedEvent) => {
+        const updatedEvent = events.map((event) => {
+            if (event._id === id) {
+                return {
+                    title: editedEvent.title,
+                    location: editedEvent.location,
+                    date: editedEvent.date,
+                    description: editedEvent.description,
+                    image: editedEvent.image,
+                    rating: editedEvent.rating
+                }
+            }
+            return event;
+        });
+
+        setEvents(updatedEvent);
+        console.log(events);
+        sortEvents(updatedEvent);
+        console.log(sortedEvents);
+    }
+
+    const deleteEvent = (id) => {
+        const updatedEvents = events.filter((event) => {
+            return event._id !== id;
+        });
+
+        setEvents(updatedEvents);
+        sortEvents(updatedEvents);
+    }
+
     return (
         <div>
             <Router>
@@ -88,12 +118,12 @@ function App() {
                     <Route exact path="/" element={<Home events={sortedEvents} />} />
                     <Route path="/o-nas" element={<About />} />
                     <Route path="/wydarzenia" element={<Events events={futureAllEvents} />} />
-                    <Route path="/wydarzenia/:id" element={<EventDetails />} />
+                    <Route path="/wydarzenia/:id" element={<EventDetails onDelete={deleteEvent} />} />
                     <Route path="/kursy" element={<Courses />} />
                     <Route path="/kontakt" element={<Contact />} />
                     <Route path="/rejestracja" element={<Register />} />
                     <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent} />} />
-                    <Route path="/wydarzenia/:id/edycja" element={<EventEdit />} />
+                    <Route path="/wydarzenia/:id/edycja" element={<EventEdit onEdit={editEvent} />} />
                 </Routes>
                 <Footer />   
             </Router>

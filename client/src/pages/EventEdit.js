@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function EventEdit() {
+function EventEdit({ onEdit }) {
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
     const [image, setImage] = useState('');
@@ -20,8 +20,8 @@ function EventEdit() {
         setImage(event.image);
         setRating(event.rating);
         setDescription(event.description);
-        setDay(new Date(event.date).getDay());
-        setMonth(new Date(event.date).getMonth());
+        setDay(new Date(event.date).getDay() + 1);
+        setMonth(new Date(event.date).getMonth() + 1);
         setYear(new Date(event.date).getFullYear());
     }
 
@@ -46,6 +46,8 @@ function EventEdit() {
             description,
             date
           })
+
+          onEdit(id, {title, location, date, description, image, rating});
     }
 
     const handleChangeTitle = (event) => {
