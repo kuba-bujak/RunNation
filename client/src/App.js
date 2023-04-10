@@ -62,7 +62,23 @@ function App() {
             .sort((a, b) => new Date(a.date) - new Date(b.date));
 
        setFutureAllEvents(futureAllEvents);
-    }  
+    } 
+    
+    const createEvent = (newEvent) => {
+        const updatedEvents = [
+            ...events,
+            {
+                title: newEvent.title,
+                location: newEvent.location,
+                date: newEvent.date,
+                description: newEvent.description,
+                image: newEvent.image,
+                rating: newEvent.rating
+            }
+        ]
+        setEvents(updatedEvents);
+        sortEvents(updatedEvents);
+    }
 
     return (
         <div>
@@ -76,7 +92,7 @@ function App() {
                     <Route path="/kursy" element={<Courses />} />
                     <Route path="/kontakt" element={<Contact />} />
                     <Route path="/rejestracja" element={<Register />} />
-                    <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={setEvents} />} />
+                    <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent} />} />
                     <Route path="/wydarzenia/:id/edycja" element={<EventEdit />} />
                 </Routes>
                 <Footer />   

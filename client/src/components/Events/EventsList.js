@@ -6,7 +6,7 @@ function EventsList({ events }) {
 
     const displayEvent = events.map(event => {
         return (
-            <Link to={`/wydarzenia/${event._id}`}><ShowEvent key={event._id} event={event} /></Link>
+            <Link to={`/wydarzenia/${event._id}` } key={event._id}><ShowEvent event={event} /></Link>
         )
     })
 
