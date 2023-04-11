@@ -39,7 +39,7 @@ function EventEdit({ onEdit }) {
 
     const editEvent = async (title, location, image, rating, description, day, month, year) => {
         const date =  new Date(`${year}-${month}-${day}`);
-          const response = await axios.put(`/api/events/${id}`, {
+          const response = await axios.put(`/api/events/${id}/edit`, {
             title,
             location,
             image,

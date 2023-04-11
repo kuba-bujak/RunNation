@@ -73,7 +73,7 @@ function EventCreate({ onCreate }) {
 
     return (
         <div className="form-section">
-            <form className="container shadow" onSubmit={handleSubmit} noValidate>
+            <form className="container shadow" onSubmit={handleSubmit}>
                  <header className="form-header">
                     <h1>Dodaj wydarzenie</h1>
                 </header>
