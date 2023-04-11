@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import EventDetails from "./components/Events/EventDetails";
 import EventCreate from "./pages/EventCreate";
 import EventEdit from "./pages/EventEdit";
+import Login from "./pages/Login";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -122,6 +123,7 @@ function App() {
                     <Route path="/kursy" element={<Courses />} />
                     <Route path="/kontakt" element={<Contact />} />
                     <Route path="/rejestracja" element={<Register />} />
+                    <Route path="/logowanie" element={<Login />} />
                     <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent} />} />
                     <Route path="/wydarzenia/:id/edycja" element={<EventEdit onEdit={editEvent} />} />
                 </Routes>

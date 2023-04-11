@@ -736,4 +736,16 @@ h4 {
 	  padding-right: 0;
 	}
   }
+
+  .register-link {
+	color: #F1E9DB;
+	text-decoration: underline;
+	transition: all 0.5s ease;
+	display: block;
+	margin-top: 1rem;
+  }
+
+  .register-link:hover {
+	color: #fca311;
+  }
   
