@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios';
 
 function Register() {
     const [username, setUsername] = useState('');
@@ -8,11 +9,20 @@ function Register() {
     const [role, setRole] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
 
+    const createUser = async (username, password, email, role) => {
+        const response = await axios.post(`/api/register`, {
+            username,
+            email,
+            role,
+            password
+        });
 
-    const navigate = useNavigate();
+        console.log(response.data);
+    }
 
     const handleSubmit = (event) => {
-
+        event.preventDefault();
+        createUser(username, password, email, role);
     } 
 
     const handleChangeUsername = (event) => {
@@ -52,11 +62,11 @@ function Register() {
                     <h4>Adres email</h4>
                     <div className="input-group input-group-icon">
                         <input type="text" placeholder="Adres email" value={email} onChange={handleChangeEmail} required/>
-                        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                        <div className="input-icon"><i className="fa fa-envelope"></i></div>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <h4>Stanowisko</h4>
-                        <div class="input-group">
+                        <div className="input-group">
                             <select required value={role} onChange={handleChangeRole}>
                                 <option value={'zawodnik'}>Zawodnik</option>
                                 <option value={'trener'}>Trener</option>
@@ -67,12 +77,12 @@ function Register() {
                     <h4>Hasło</h4>
                     <div className="input-group input-group-icon">
                         <input type="password" placeholder="Hasło" value={password} onChange={handleChangePassword} required/>
-                        <div class="input-icon"><i class="fa fa-key"></i></div>
+                        <div className="input-icon"><i className="fa fa-key"></i></div>
                     </div>
                     <h4>Powtórz hasło</h4>
                     <div className="input-group input-group-icon">
                         <input type="password" placeholder="Powtórz hasło" value={repeatPassword} onChange={handleChangeRepeatedPassword} required/>
-                        <div class="input-icon"><i class="fa fa-key"></i></div>
+                        <div className="input-icon"><i className="fa fa-key"></i></div>
                     </div>
                 </div>
                 <button type="submit" className="btn form-btn">Załóż konto</button>
