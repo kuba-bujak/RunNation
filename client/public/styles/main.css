@@ -748,4 +748,9 @@ h4 {
   .register-link:hover {
 	color: #fca311;
   }
+
+  .review-container {
+	width: 100%;
+	margin-bottom: 2rem;
+  }
   

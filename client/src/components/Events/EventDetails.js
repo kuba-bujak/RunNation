@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
+import ReviewList from "../Reviews/ReviewList";
 
 function EventDetails({ onDelete }) {
     const [event, setEvent] = useState({});
@@ -66,63 +67,7 @@ function EventDetails({ onDelete }) {
                 </div>
             </div>
             <div className="comments-section">
-                <div className="comment-container">
-                    <div className="comment-container__image">
-                        <div className="comment-avatar"></div>
-                        <div className="comment-author">
-                            @kuba.b
-                        </div>
-                        <div className="comment-role">
-                            Zawodnik
-                        </div>
-                    </div>
-                    <div className="comment-container__content">
-                        <div className="content-text">
-                            To jest jakiś taki mój tekst o niczym.  To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym.
-                        </div>
-                        <div className="time">
-                            01-01-2023
-                        </div>
-                    </div>
-                </div>
-                <div className="comment-container">
-                    <div className="comment-container__image">
-                        <div className="comment-avatar"></div>
-                        <div className="comment-author">
-                            @kuba.b
-                        </div>
-                        <div className="comment-role">
-                            Zawodnik
-                        </div>
-                    </div>
-                    <div className="comment-container__content">
-                        <div className="content-text">
-                            To jest jakiś taki mój tekst o niczym.  To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym.
-                        </div>
-                        <div className="time">
-                            01-01-2023
-                        </div>
-                    </div>
-                </div>
-                <div className="comment-container">
-                    <div className="comment-container__image">
-                        <div className="comment-avatar"></div>
-                        <div className="comment-author">
-                            @kuba.b
-                        </div>
-                        <div className="comment-role">
-                            Zawodnik
-                        </div>
-                    </div>
-                    <div className="comment-container__content">
-                        <div className="content-text">
-                            To jest jakiś taki mój tekst o niczym.  To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym. To jest jakiś taki mój tekst o niczym.
-                        </div>
-                        <div className="time">
-                            01-01-2023
-                        </div>
-                    </div>
-                </div>
+                <ReviewList />
             </div>
         </div>
     )

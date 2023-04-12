@@ -74,9 +74,9 @@ function EventCreate({ onCreate }) {
     return (
         <div className="form-section">
             <form className="container shadow" onSubmit={handleSubmit}>
-                 <header className="form-header">
-                    <h1>Dodaj wydarzenie</h1>
-                </header>
+                    <header className="form-header">
+                        <h1>Dodaj wydarzenie</h1>
+                    </header>
                 <div className="row">
                 <h4>Informacje ogólne</h4>
                 <div className="input-group input-group-icon">
