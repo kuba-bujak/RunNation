@@ -97,9 +97,7 @@ function App() {
         });
 
         setEvents(updatedEvent);
-        console.log(events);
         sortEvents(updatedEvent);
-        console.log(sortedEvents);
     }
 
     const deleteEvent = (id) => {

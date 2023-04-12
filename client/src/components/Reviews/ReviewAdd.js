@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 
-function ReviewAdd() {
+function ReviewAdd({ onCreate }) {
     const [comment, setComment] = useState('');
 
     const handleChangeComment = (event) => {
@@ -14,10 +14,11 @@ function ReviewAdd() {
     }
 
     const addReview = async(comment) => {
-        const response = await axios.post(('/api/reviews/new', {
-            comment
-        }));
-        console.log(response);
+        // const response = await axios.post(('/api/reviews/new', {
+        //     comment
+        // }));
+        // console.log(response);
+        onCreate(comment)
         setComment('');
     }
 

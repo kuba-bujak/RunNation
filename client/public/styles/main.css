@@ -292,6 +292,9 @@ footer {
 .edit-btn {
 	background-color: blue;
 	margin-right: 0.4rem;
+	color: #F1E9DB;
+	border: none;
+	cursor: pointer;
 }
 
 .join-us-btn {
@@ -753,4 +756,19 @@ h4 {
 	width: 100%;
 	margin-bottom: 2rem;
   }
-  
+
+  .comment-container__image {
+	width: 10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+
+  .comment-container__content {
+	width: 100%;
+  }
+
+  .content-textarea {
+	overflow: hidden;
+	background-color: inherit;
+  }
