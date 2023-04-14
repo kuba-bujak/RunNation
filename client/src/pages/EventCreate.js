@@ -16,7 +16,7 @@ function EventCreate({ onCreate }) {
 
     const createSportEvent = async (title, location, image, rating, description, day, month, year) => {
         const date =  new Date(`${year}-${month}-${day}`);
-          const response = await axios.post('/api/events/new', {
+          const response = await axios.post('/api/events', {
             title,
             location,
             image,
