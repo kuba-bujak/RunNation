@@ -2,7 +2,7 @@ import ReviewShow from './ReviewShow';
 import ReviewAdd from './ReviewAdd';
 import React, { useState } from 'react';
 
-function ReviewList() {
+function ReviewList({ eventId }) {
     const [reviewList, setReviewList] = useState([
         {
             id: 1,
@@ -41,7 +41,7 @@ function ReviewList() {
     }
 
     const editReview = (id, editedReview) => {
-        const updatedReview = reviewList.map((review) => {
+        const updatedReviews = reviewList.map((review) => {
             if (review.id === id) {
                 return {
                     comment: editedReview.comment
@@ -49,6 +49,7 @@ function ReviewList() {
             }
             return review;
         });
+        setReviewList(updatedReviews);
     }
 
     const deleteReview = (id) => {
@@ -65,7 +66,7 @@ function ReviewList() {
 
     return (
         <div>
-            <ReviewAdd onCreate={createNewReview} />
+            <ReviewAdd onCreate={createNewReview} id={eventId}/>
             <React.Fragment>
                 {displayReviews.reverse()}
             </React.Fragment>
