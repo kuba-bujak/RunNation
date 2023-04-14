@@ -60,7 +60,17 @@ function App() {
         
         const futureAllEvents = events
             .filter(event => new Date(event.date) > new Date())
-            .sort((a, b) => new Date(a.date) - new Date(b.date));
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .map(event => {
+                const date = new Date(event.date);
+                const month = date.toLocaleString('default', { month: 'short' });
+                const day = date.getDate();
+                const year = date.getFullYear();
+                return {
+                    ...event,
+                    date: `${day} ${month} ${year}`
+                };
+            });
 
         setFutureAllEvents(futureAllEvents);
     } 
