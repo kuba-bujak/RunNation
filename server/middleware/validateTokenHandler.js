@@ -14,11 +14,10 @@ const validateToken = asyncHandler(async(req, res, next) => {
             req.user = decoded.user;
             next();
         });
-
-        if(!token) {
-            res.status(401);
-            throw new Error("Użytkownik nie został zwewryfikowany lub brakuje tokenu")
-        }
+    }
+    if(!token) {
+        res.status(401);
+        throw new Error("Użytkownik nie został zwewryfikowany lub brakuje tokenu")
     }
 });
 

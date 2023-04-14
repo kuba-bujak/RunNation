@@ -20,9 +20,7 @@ const createEvent = asyncHandler(async (req, res) => {
         rating,
         image
     });
-
-    console.log(`Utworzono wydarzenie ${event}`);
-
+    
     if (event) {
         res.status(201).json(event);
     } else {
@@ -31,7 +29,15 @@ const createEvent = asyncHandler(async (req, res) => {
     }
 
     res.json({ message: "Utworzono wydarzenie" })
-})
+});
+
+const displayNewForm = (req, res) => {
+    res.status(200).json({ message: 'Stworzono formularz' });
+}
+
+const displayEditForm = (req, res) => {
+    res.status(200).json({ message: 'Stworzono formularz' });
+}
 
 const getEvent = asyncHandler(async (req, res) => {
     const { id } = req.params;
@@ -86,4 +92,4 @@ const deleteEvent = asyncHandler(async (req, res) => {
 
 })
 
-module.exports = { getEvents, createEvent, getEvent, editEvent, deleteEvent }
+module.exports = { getEvents, createEvent, getEvent, editEvent, deleteEvent, displayEditForm, displayNewForm };
