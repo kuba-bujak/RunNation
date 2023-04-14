@@ -31,7 +31,7 @@ function ShowEvent({ event }) {
                         <p>{event.description}</p>
                     }
                     <br />
-                    <time dateTime={event.date}>{event.date}</time>
+                    <div dateTime={event.date}>{event.date}</div>
                 </div>
             </div>
         </div>
