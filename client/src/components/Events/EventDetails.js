@@ -6,6 +6,7 @@ import ReviewList from "../Reviews/ReviewList";
 
 function EventDetails({ onDelete }) {
     const [event, setEvent] = useState({});
+    const [eventDate, setEventDate] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -19,6 +20,11 @@ function EventDetails({ onDelete }) {
         const response = await axios.get(`/api/events/${id}`);
 
         setEvent(response.data);
+        const date = new Date(response.data.date);
+        const month = date.toLocaleString('default', { month: 'short' });
+        const day = date.getDate();
+        const year = date.getFullYear();
+        setEventDate(`${day} ${month} ${year}`);
     };
 
     let ratings = []
@@ -58,7 +64,7 @@ function EventDetails({ onDelete }) {
                     <div className="content">
                         {event.description}
                         <br />
-                        <time dateTime={event.date}>{event.date}</time>
+                        <time dateTime={eventDate}>{eventDate}</time>
                     </div>
                     <div className="card-footer">
                         <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
@@ -67,7 +73,7 @@ function EventDetails({ onDelete }) {
                 </div>
             </div>
             <div className="comments-section">
-                <ReviewList />
+                <ReviewList eventId={id}/>
             </div>
         </div>
     )
