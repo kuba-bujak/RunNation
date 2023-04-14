@@ -19,11 +19,8 @@ db.once('open', () => {
 });
 
 app.use('/api/events', require('./routes/eventRoutes'));
+app.use('/api/events/:id/reviews', require('./routes/reviewRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
-
-app.post('/api/reviews/new', async (req, res) => {
-    res.json({ message: 'Review created' });
-})
 
 app.listen(process.env.PORT, () => {
     console.log(`Server listening on port ${process.env.PORT}`);
