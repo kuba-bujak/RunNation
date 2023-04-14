@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -7,7 +7,7 @@ function Login() {
     const [password, setPassword] = useState('');
 
     const userLogin = async () => {
-        const response = await axios.post('/api/login', {
+        const response = await axios.post('/api/users/login', {
             username,
             password
         });

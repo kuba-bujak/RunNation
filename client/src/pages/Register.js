@@ -10,14 +10,12 @@ function Register() {
     const [repeatPassword, setRepeatPassword] = useState('');
 
     const createUser = async (username, password, email, role) => {
-        const response = await axios.post(`/api/register`, {
+        const response = await axios.post(`/api/users/register`, {
             username,
             email,
             role,
             password
         });
-
-        console.log(response.data);
     }
 
     const handleSubmit = (event) => {
