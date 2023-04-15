@@ -1,7 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 
-function Navigation() {
+
+function Navigation({ isLoged, handleLogin }) {
 	const location = useLocation();
+
+	const handleLogout = (event) => {
+		event.preventDefault();
+		localStorage.removeItem('AuthToken');
+		handleLogin(false);
+	}
     return (
         <nav className="navigation shadow">
 
@@ -26,11 +33,18 @@ function Navigation() {
 				<li className="nav-item">
 					<Link className={location.pathname === '/kontakt' ? 'nav-link active' : 'nav-link'} to={'/kontakt'} >Kontakt</Link>
 				</li>
+				{!isLoged ? 
 				<li className="nav-item">
 					<Link className={location.pathname === '/logowanie' ? 'nav-link active' : 'nav-link'} to={'/logowanie'}>Logowanie</Link>
+				</li> :
+				<li className="nav-item">
+					<form>
+						<button className={'nav-link'} onClick={handleLogout}>Wyloguj</button>
+					</form>
 				</li>
-			 </ul>
+				}
 
+			 </ul>
 		  <div className="hamburger">
 			<span className="bar"></span>
 			<span className="bar"></span>

@@ -9,16 +9,28 @@ function EventDetails({ onDelete }) {
     const [eventDate, setEventDate] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
+    const authToken = localStorage.getItem('AuthToken');
 
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         fetchEventData();
-    }, [id]);
+    }, []);
+
+    // const userAuthorization = async () => {
+    //     console.log(authToken)
+    //     await axios.get('/api/users/current',{
+    //         headers: {
+    //             'Authorization': `Bearer ${authToken}`,
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(res =>  console.log(res.data))
+    //         .catch(err => console.log(err));        
+    // }
 
     
     const fetchEventData = async () => {
         const response = await axios.get(`/api/events/${id}`);
-
         setEvent(response.data);
         const date = new Date(response.data.date);
         const month = date.toLocaleString('default', { month: 'short' });
@@ -66,14 +78,15 @@ function EventDetails({ onDelete }) {
                         <br />
                         <time dateTime={eventDate}>{eventDate}</time>
                     </div>
+                    {authToken &&
                     <div className="card-footer">
                         <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
                         <button onClick={() => deleteEvent(event._id)} className="event-btn delete-btn">Usuń</button>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className="comments-section">
-                <ReviewList eventId={id}/>
+                <ReviewList eventId={id} reviews={event.reviews} />
             </div>
         </div>
     )

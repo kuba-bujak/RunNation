@@ -19,7 +19,15 @@ function App() {
     const [events, setEvents] = useState([]);
     const [sortedEvents, setSortedEvents] = useState([]);
     const [futureAllEvents, setFutureAllEvents] = useState([]);
+    const [isLoged, setIsLoged] = useState(false);
 
+    const isUserLoged = () => {
+        const authToken = localStorage.getItem('AuthToken');
+        if (authToken) {
+            setIsLoged(true);
+            console.log(authToken);
+        }
+    }    
 
     const fetchEvents = async () => {
         const response = await axios.get('/api/events');
@@ -30,7 +38,11 @@ function App() {
 
     useEffect(() => {
         fetchEvents()
-    }, [events]);
+    }, []);
+
+    useEffect(() => {
+        isUserLoged();
+    }, [isLoged]);
 
     const sortEvents = (events) => {
         const futureEvents = events.filter(event => new Date(event.date) > new Date());
@@ -122,7 +134,7 @@ function App() {
     return (
         <div>
             <Router>
-                <Navigation />
+                <Navigation isLoged={isLoged} handleLogin={setIsLoged} />
                 <Routes>
                     <Route exact path="/" element={<Home events={sortedEvents} />} />
                     <Route path="/o-nas" element={<About />} />
@@ -131,7 +143,7 @@ function App() {
                     <Route path="/kursy" element={<Courses />} />
                     <Route path="/kontakt" element={<Contact />} />
                     <Route path="/rejestracja" element={<Register />} />
-                    <Route path="/logowanie" element={<Login />} />
+                    <Route path="/logowanie" element={<Login handleLogin={setIsLoged}/>} />
                     <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent} />} />
                     <Route path="/wydarzenia/:id/edycja" element={<EventEdit onEdit={editEvent} />} />
                 </Routes>

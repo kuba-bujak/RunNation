@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import EventsList from "../components/Events/EventsList";
 
 function Events({ events }) {
+    const authToken = localStorage.getItem('AuthToken');
+
     return (
         <div className="home-contaainer">
             <div className='header-section'>
@@ -12,9 +14,11 @@ function Events({ events }) {
                     <h3>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod molestie fringilla. Quisque vel vehicula elit, a finibus nisl. Mauris id justo efficitur, tempor enim et, finibus arcu
                     </h3>
-                    <Link to={`/wydarzenia/nowe`} className="btn join-us-btn">
-                        Dodaj wydarzenie
-                    </Link>
+                    {authToken && 
+                        <Link to={`/wydarzenia/nowe`} className="btn join-us-btn">
+                            Dodaj wydarzenie
+                        </Link>
+                    }
                 </header>
             </div>
             <div className='event-section'>

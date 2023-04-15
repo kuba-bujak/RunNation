@@ -2,22 +2,24 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-function Login() {
+function Login({ handleLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const userLogin = async () => {
-        const response = await axios.post('/api/users/login', {
+        await axios.post('/api/users/login', {
             username,
             password
-        });
-
-        console.log(response);
+        }).then((res) => {
+            let token = res.data.accessToken;
+            localStorage.setItem("AuthToken", token);
+        })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         userLogin(username, password);
+        handleLogin(true);
     } 
 
     const handleChangeUsername = (event) => {

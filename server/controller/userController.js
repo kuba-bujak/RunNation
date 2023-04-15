@@ -2,6 +2,8 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require("dotenv").config()
+
 
 const registerUser = asyncHandler(async (req, res) => {
     const { username, email, role, password } = req.body;
@@ -39,10 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
     } else {
         res.status(400);
         throw new Error("Dane użytkownika nie są poprawne");
-    }
-
-    res.json({ message: 'Użytkownik został zarejestrowany' })
-});
+    }});
 
 const loginUser = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
@@ -56,7 +55,6 @@ const loginUser = asyncHandler(async (req, res) => {
         const accessToken = jwt.sign({
             user: {
                 username: user.username,
-                email: user.email,
                 role: user.role,
                 id: user.id
             }
@@ -71,7 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const currentUser = asyncHandler(async (req, res) => {
-    res.json(req.user)
+    res.json(req.user);
 });
 
 module.exports = { registerUser, loginUser, currentUser };

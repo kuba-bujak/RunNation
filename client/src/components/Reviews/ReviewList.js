@@ -1,48 +1,21 @@
 import ReviewShow from './ReviewShow';
 import ReviewAdd from './ReviewAdd';
 import React, { useState } from 'react';
+import axios from 'axios';
 
-function ReviewList({ eventId }) {
-    const [reviewList, setReviewList] = useState([
-        {
-            id: 1,
-            username: 'kuba.b',
-            role: 'Zawodnik',
-            comment: 'To jest mój super komentarz',
-            date: '01-01-2023'
-        },
-        {
-            id: 2,
-            username: 'sprinterzy.com',
-            role: 'Trener',
-            comment: 'Nie znamy się na niczym ale się wypowiemy',
-            date: '10-01-2023'
-        },
-        {
-            id: 3,
-            username: 'Kamil Kobiałka',
-            role: 'Trener',
-            comment: '@sprinterzy.com chuj wam w dupe!',
-            date: '11-01-2023'
-        }
-    ]);
+function ReviewList({ eventId, reviews }) {
+    const [reviewList, setReviewList] = useState([]);
 
-    const createNewReview = (newReview) => {
-            setReviewList([
-                ...reviewList,
-                {
-                    id: Math.floor(Math.random() * 99),
-                    username: 'test',
-                    role: 'Kibic',
-                    comment: newReview,
-                    date: '12-04-2023'
-                }
-            ]);
+    const createNewReview = async (comment) => {
+           const response = await axios.post(`/api/events/${eventId}/reviews`, {
+            comment
+           });
+           console.log(response);
     }
 
     const editReview = (id, editedReview) => {
         const updatedReviews = reviewList.map((review) => {
-            if (review.id === id) {
+            if (review._id === id) {
                 return {
                     comment: editedReview.comment
                 }
@@ -54,14 +27,14 @@ function ReviewList({ eventId }) {
 
     const deleteReview = (id) => {
         const updatedReviews = reviewList.filter((review) => {
-            return review.id !== id;
+            return review._id !== id;
         });
 
         setReviewList(updatedReviews);
     }
 
     const displayReviews = reviewList.map(review => {
-        return (<ReviewShow review={review} key={review.id} onEdit={editReview} onDelete={deleteReview} />)
+        return (<ReviewShow review={review} key={review._id} onEdit={editReview} onDelete={deleteReview} />)
     })
 
     return (

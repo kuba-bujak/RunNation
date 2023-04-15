@@ -8,17 +8,8 @@ function ReviewAdd({ onCreate, id }) {
         setComment(event.target.value);
     }
 
-    const createReview = async (comment) => {
-        const response = await axios.post(`/api/events/${id}/reviews`, {
-            comment
-        });
-
-        console.log(response);
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        createReview(comment);
         onCreate(comment);
         setComment('');
     }
