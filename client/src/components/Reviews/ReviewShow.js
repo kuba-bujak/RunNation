@@ -1,14 +1,16 @@
 import ReviewButtons from "./ReviewButtons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function ReviewShow({ review, onEdit, onDelete }) {
     const [isEditClicked, setIsEditClicked] = useState(false);
     const [comment, setComment] = useState(review.comment)
-
+    
     const handleIsEditClicked = (event) => {
         event.preventDefault();
         setIsEditClicked(!isEditClicked);
-        onEdit(comment);
+        if(isEditClicked) {
+            onEdit(review._id, comment);
+        }
     }
 
     const handleChangeComment = (event) => {
@@ -17,7 +19,7 @@ function ReviewShow({ review, onEdit, onDelete }) {
 
     const handleDeleteClicked = (event) => {
         event.preventDefault();
-        onDelete(review.id);
+        onDelete(review._id);
     }
 
     return (
@@ -25,10 +27,10 @@ function ReviewShow({ review, onEdit, onDelete }) {
             <div className="comment-container__image">
                 <div className="comment-avatar"></div>
                 <div className="comment-author">
-                    @{review.username}
+                    @{review.author.username}
                 </div>
                 <div className="comment-role">
-                    {review.role}
+                    {review.author.role}
                 </div>
             </div>
             <div className="comment-container__content">
@@ -36,7 +38,7 @@ function ReviewShow({ review, onEdit, onDelete }) {
                     ? <textarea value={comment} onChange={handleChangeComment} className="content-textarea" rows={10}></textarea>
                     : <div className="content-text">{comment} </div>}
                 <div className="time">
-                    {review.date}
+                    {review.createdAt}
                 </div>
                 <ReviewButtons editClicked={handleIsEditClicked} onDelete={handleDeleteClicked}/>
             </div>

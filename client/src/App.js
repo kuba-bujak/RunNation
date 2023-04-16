@@ -25,7 +25,6 @@ function App() {
         const authToken = localStorage.getItem('AuthToken');
         if (authToken) {
             setIsLoged(true);
-            console.log(authToken);
         }
     }    
 

@@ -7,6 +7,7 @@ import ReviewList from "../Reviews/ReviewList";
 function EventDetails({ onDelete }) {
     const [event, setEvent] = useState({});
     const [eventDate, setEventDate] = useState('');
+    const [eventReviews, setEventReviews] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
     const authToken = localStorage.getItem('AuthToken');
@@ -30,13 +31,14 @@ function EventDetails({ onDelete }) {
 
     
     const fetchEventData = async () => {
-        const response = await axios.get(`/api/events/${id}`);
+        const response = await axios.get(`/api/events/${id}`)
         setEvent(response.data);
         const date = new Date(response.data.date);
         const month = date.toLocaleString('default', { month: 'short' });
         const day = date.getDate();
         const year = date.getFullYear();
         setEventDate(`${day} ${month} ${year}`);
+        setEventReviews(response.data.reviews);
     };
 
     let ratings = []
@@ -86,7 +88,7 @@ function EventDetails({ onDelete }) {
                 </div>
             </div>
             <div className="comments-section">
-                <ReviewList eventId={id} reviews={event.reviews} />
+                <ReviewList eventId={id} reviews={eventReviews} updateReviewList={setEventReviews} />
             </div>
         </div>
     )

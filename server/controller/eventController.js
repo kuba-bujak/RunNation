@@ -41,7 +41,13 @@ const displayEditForm = (req, res) => {
 
 const getEvent = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const event = await Events.findById(id);
+    const event = await Events.findById(id)
+        .populate({
+            path: 'reviews',
+            populate: {
+                path: 'author'
+            }
+        })
     if (event) {
         res.status(200).json(event);
     } else {

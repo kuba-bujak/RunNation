@@ -4,10 +4,7 @@ const Event = require('../models/events');
 
 const getReviews = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const reviews = await Review.find({});
     const event = await Event.findById(id);
-    console.log(reviews);
-    console.log(req.user);
     // res.status(200).json(reviews);
     res.status(200).json(event.reviews);
 })
@@ -22,13 +19,17 @@ const createReview = asyncHandler(async (req, res) => {
 
     }
     const event = await Event.findById(id);
-    const review = await Review.create({comment});
-    review.author = req.user._id;
+    const review = new Review({comment});
+    review.author = req.user.id;
     event.reviews.push(review);
     const updatedEvent = await event.save();
     const createdReview = await review.save();
-    if (updatedEvent && createdReview) {
-        res.status(200).json({ message: "Pomyślnie dodano komentarz do bazy danych" });
+    const displayCreatedReview = await Review.findById(createdReview._id)
+    .populate({
+        path: 'author',
+    })
+    if (updatedEvent && createdReview && displayCreatedReview) {
+        res.status(200).json(displayCreatedReview);
     } else {
         res.statusMessage(400);
         throw new Error("Pole komentarz nie jest poprawne");
@@ -49,7 +50,7 @@ const editReview = asyncHandler(async (req, res) =>{
     });
 
     if (updatedReview) {
-        res.status(200).json({ message: "Pomyślnie zaktualizowano komentarz w bazie danych" });
+        res.status(200).json(updatedReview);
     } else {
         res.status(400);
         throw new Error("Pole komentarz nie jest poprawne");

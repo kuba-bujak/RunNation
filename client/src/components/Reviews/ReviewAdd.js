@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from 'axios';
 
 function ReviewAdd({ onCreate, id }) {
     const [comment, setComment] = useState('');

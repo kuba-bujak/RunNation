@@ -1,41 +1,66 @@
 import ReviewShow from './ReviewShow';
 import ReviewAdd from './ReviewAdd';
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
+const authToken = localStorage.getItem('AuthToken');
 
-function ReviewList({ eventId, reviews }) {
-    const [reviewList, setReviewList] = useState([]);
+function ReviewList({ eventId, reviews, updateReviewList }) {
 
     const createNewReview = async (comment) => {
-           const response = await axios.post(`/api/events/${eventId}/reviews`, {
-            comment
-           });
-           console.log(response);
+        const response = await axios.post(`/api/events/${eventId}/reviews`, {comment} ,{
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const updatedReview = [
+            ...reviews,
+            response.data
+        ];
+        updateReviewList(updatedReview);
     }
 
-    const editReview = (id, editedReview) => {
-        const updatedReviews = reviewList.map((review) => {
+    const editReview = async (id, editedReview) => {
+        await axios.put(`/api/events/${eventId}/reviews/${id}/edit`, {comment: editedReview} ,{
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const updatedReviews = reviews.map((review) => {
             if (review._id === id) {
                 return {
+                    ...review,
                     comment: editedReview.comment
                 }
             }
             return review;
         });
-        setReviewList(updatedReviews);
+        updateReviewList(updatedReviews);
     }
 
-    const deleteReview = (id) => {
-        const updatedReviews = reviewList.filter((review) => {
+    const deleteReview = async (id) => {
+        await axios.delete(`/api/events/${eventId}/reviews/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const updatedReviews = reviews.filter((review) => {
             return review._id !== id;
         });
 
-        setReviewList(updatedReviews);
+        updateReviewList(updatedReviews);
     }
 
-    const displayReviews = reviewList.map(review => {
-        return (<ReviewShow review={review} key={review._id} onEdit={editReview} onDelete={deleteReview} />)
-    })
+    const displayReviews = [];
+    if (reviews) {
+        reviews.map(review => {
+        return displayReviews.push(<ReviewShow review={review} key={review._id} onEdit={editReview} onDelete={deleteReview} />)
+    });
+}
 
     return (
         <div>
