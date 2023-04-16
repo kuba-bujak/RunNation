@@ -8,19 +8,32 @@ function Register() {
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const createUser = async (username, password, email, role) => {
-        const response = await axios.post(`/api/users/register`, {
+        await axios.post(`/api/users/register`, {
             username,
             email,
             role,
             password
-        });
+        }).then((res) => {
+            setMessage(res.data.message);
+            setTimeout(() => {
+                navigate(`/logowanie`, { replace: true });
+            }, 2000)
+        }).catch((err) => {
+            setMessage(err.response.data.message);
+        })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         createUser(username, password, email, role);
+        setUsername("");
+        setPassword("");
+        setEmail("");
+        setRole("");
     } 
 
     const handleChangeUsername = (event) => {
@@ -47,6 +60,7 @@ function Register() {
 
     return (
         <div className="form-section">
+            <div className="flashMessage">{message}</div>
             <form className="container shadow" onSubmit={handleSubmit}>
                  <header className="form-header">
                     <h1>Rejestracja</h1>

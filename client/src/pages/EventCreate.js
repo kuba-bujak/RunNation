@@ -27,7 +27,7 @@ function EventCreate({ onCreate }) {
         onCreate({title, location, image, rating, description, date});
         setTimeout(() => {
             navigate(`/wydarzenia`, { replace: true });
-        }, 3000);
+        }, 2000);
         
     }
 

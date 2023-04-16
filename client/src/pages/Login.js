@@ -1,18 +1,28 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function Login({ handleLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
-    const userLogin = async () => {
+    const userLogin = async (username, password) => {
         await axios.post('/api/users/login', {
             username,
             password
         }).then((res) => {
             let token = res.data.accessToken;
             localStorage.setItem("AuthToken", token);
+            setMessage(res.data.message);
+            setTimeout(() => {
+                navigate(`/wydarzenia`, { replace: true });
+            }, 2000)
+        }).catch((err) => {
+            setMessage(err.response.data.message);
         })
     }
 
@@ -34,6 +44,7 @@ function Login({ handleLogin }) {
 
     return (
         <div className="form-section">
+            <div className="flashMessage">{message}</div>
             <form className="container shadow" onSubmit={handleSubmit}>
                  <header className="form-header">
                     <h1>Logowanie</h1>

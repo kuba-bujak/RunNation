@@ -509,11 +509,16 @@ footer {
 .form-section {
 	min-height: 100vh;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	color: #2C514C;
 	padding-top: 80px;
+}
+
+.flashMessage {
+	margin-bottom: 1rem;
 }
 
 .form-header {
