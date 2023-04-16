@@ -1,10 +1,10 @@
 import ReviewButtons from "./ReviewButtons";
 import { useState } from "react";
 
-function ReviewShow({ review, onEdit, onDelete }) {
+function ReviewShow({ review, onEdit, onDelete, isAdmin }) {
     const [isEditClicked, setIsEditClicked] = useState(false);
-    const [comment, setComment] = useState(review.comment)
-    
+    const [comment, setComment] = useState(review.comment);
+
     const handleIsEditClicked = (event) => {
         event.preventDefault();
         setIsEditClicked(!isEditClicked);
@@ -40,7 +40,7 @@ function ReviewShow({ review, onEdit, onDelete }) {
                 <div className="time">
                     {review.createdAt}
                 </div>
-                <ReviewButtons editClicked={handleIsEditClicked} onDelete={handleDeleteClicked}/>
+                {isAdmin && <ReviewButtons editClicked={handleIsEditClicked} onDelete={handleDeleteClicked}/>}
             </div>
         </div>
     )

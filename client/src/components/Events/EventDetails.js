@@ -11,23 +11,32 @@ function EventDetails({ onDelete }) {
     const { id } = useParams();
     const navigate = useNavigate();
     const authToken = localStorage.getItem('AuthToken');
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    const isAdminGetter = async () => {
+        const response = await axios.get(`/api/users/current`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.data.role === 'admin') {
+            setIsAdmin(true);
+        } else {
+            setIsAdmin(false);
+        }
+    }
+
+    useEffect(() => {
+        if (authToken) {
+            isAdminGetter();
+        }
+    }, [isAdmin]);
 
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         fetchEventData();
     }, []);
-
-    // const userAuthorization = async () => {
-    //     console.log(authToken)
-    //     await axios.get('/api/users/current',{
-    //         headers: {
-    //             'Authorization': `Bearer ${authToken}`,
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(res =>  console.log(res.data))
-    //         .catch(err => console.log(err));        
-    // }
 
     
     const fetchEventData = async () => {
@@ -80,7 +89,7 @@ function EventDetails({ onDelete }) {
                         <br />
                         <time dateTime={eventDate}>{eventDate}</time>
                     </div>
-                    {authToken &&
+                    {isAdmin &&
                     <div className="card-footer">
                         <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
                         <button onClick={() => deleteEvent(event._id)} className="event-btn delete-btn">Usuń</button>
@@ -88,7 +97,7 @@ function EventDetails({ onDelete }) {
                 </div>
             </div>
             <div className="comments-section">
-                <ReviewList eventId={id} reviews={eventReviews} updateReviewList={setEventReviews} />
+                <ReviewList eventId={id} reviews={eventReviews} updateReviewList={setEventReviews} isAdmin={isAdmin} />
             </div>
         </div>
     )
