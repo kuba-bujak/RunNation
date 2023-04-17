@@ -777,3 +777,12 @@ h4 {
 	overflow: hidden;
 	background-color: inherit;
   }
+
+  .wip-container {
+	min-height: 100vh;
+	padding-top: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #122932;
+  }

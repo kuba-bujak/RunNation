@@ -14,6 +14,8 @@ import EventDetails from "./components/Events/EventDetails";
 import EventCreate from "./pages/EventCreate";
 import EventEdit from "./pages/EventEdit";
 import Login from "./pages/Login";
+import WorkingInProgress from "./pages/WorkingInProgress";
+import NotFound from "./NotFound";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -136,15 +138,17 @@ function App() {
                 <Navigation isLoged={isLoged} handleLogin={setIsLoged} />
                 <Routes>
                     <Route exact path="/" element={<Home events={sortedEvents} />} />
-                    <Route path="/o-nas" element={<About />} />
+                    <Route path="/o-nas" element={<WorkingInProgress />} />
                     <Route path="/wydarzenia" element={<Events events={futureAllEvents} />} />
                     <Route path="/wydarzenia/:id" element={<EventDetails onDelete={deleteEvent} />} />
-                    <Route path="/kursy" element={<Courses />} />
-                    <Route path="/kontakt" element={<Contact />} />
+                    <Route path="/kursy" element={<WorkingInProgress />} />
+                    <Route path="/kontakt" element={<WorkingInProgress />} />
+                    <Route path="/galeria" element={<WorkingInProgress />} />
                     <Route path="/rejestracja" element={<Register />} />
                     <Route path="/logowanie" element={<Login handleLogin={setIsLoged}/>} />
                     <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent} />} />
                     <Route path="/wydarzenia/:id/edycja" element={<EventEdit onEdit={editEvent} />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />   
             </Router>
