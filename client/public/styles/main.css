@@ -786,3 +786,11 @@ h4 {
 	align-items: center;
 	color: #122932;
   }
+
+  .nav-link-logout {
+	background-color: inherit;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-size: 0.6rem;
+  }

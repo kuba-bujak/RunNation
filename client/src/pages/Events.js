@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import EventsList from "../components/Events/EventsList";
+import { useEffect } from "react";
 
 function Events({ events }) {
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }, []);
     const authToken = localStorage.getItem('AuthToken');
 
     return (

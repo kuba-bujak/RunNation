@@ -39,7 +39,7 @@ function Navigation({ isLoged, handleLogin }) {
 				</li> :
 				<li className="nav-item">
 					<form>
-						<button className={'nav-link'} onClick={handleLogout}>Wyloguj</button>
+						<button className={'nav-link nav-link-logout'} onClick={handleLogout}>Wyloguj</button>
 					</form>
 				</li>
 				}
