@@ -13,7 +13,7 @@ function Home({ events }) {
                     <h3>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod molestie fringilla. Quisque vel vehicula elit, a finibus nisl. Mauris id justo efficitur, tempor enim et, finibus arcu
                     </h3>
-                    <Link to={{}} className="btn join-us-btn">
+                    <Link to={'logowanie'} className="btn join-us-btn">
                         Dołącz do nas
                     </Link>
                 </header>
@@ -34,7 +34,7 @@ function Home({ events }) {
                         <p>
                             Phasellus scelerisque consequat ante. Suspendisse potenti. Cras at libero maximus, aliquet ipsum volutpat, facilisis nibh. Vestibulum porta, orci ac lacinia luctus, arcu metus aliquet felis, in tristique purus mi at justo. Quisque ex felis, vehicula sed blandit ac, aliquet eu eros. Nulla consectetur nibh vel ante vestibulum placerat ut ac lorem. Pellentesque maximus odio eu porta viverra. Proin porttitor maximus odio, id tempor risus venenatis ut. Mauris ac rhoncus diam, maximus aliquet est. Quisque pretium turpis non congue viverra. Pellentesque sem est, porttitor sit amet diam id, auctor sollicitudin ligula.
                         </p>
-                        <Link to={{}} className="btn about-us-btn">
+                        <Link to={'/o-nas'} className="btn about-us-btn">
                             Dowiedz się więcej
                         </Link>
                     </div>
@@ -45,7 +45,7 @@ function Home({ events }) {
                     <h1 className='event-header'>Wydarzenia wkrótce</h1>
                 </header>
                 <EventsList events={events} />
-                <Link to={{}} className='btn-secondary events-btn shadow'>
+                <Link to={'/wydarzenia'} className='btn-secondary events-btn shadow'>
                     Zobacz więcej
                 </Link>
             </div>
@@ -58,7 +58,7 @@ function Home({ events }) {
                     <li className='courses-list__item'>zawodników</li>
                     <li className='courses-list__item'>amatorów</li>
                 </ul>
-                <Link to={{}} className='btn-primary courses-btn'>
+                <Link to={'/kursy'} className='btn-primary courses-btn'>
                     Zobacz więcej
                 </Link>
             </div>
@@ -67,7 +67,7 @@ function Home({ events }) {
                     <h1 className='event-header'>Galeria</h1>
                 </header>
                 <EventsList events={events} />
-                <Link to={{}} className='btn-secondary events-btn shadow'>
+                <Link to={'/galeria'} className='btn-secondary events-btn shadow'>
                     Zobacz więcej
                 </Link>
             </div>

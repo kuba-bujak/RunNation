@@ -5,7 +5,7 @@ function Events({ events }) {
     const authToken = localStorage.getItem('AuthToken');
 
     return (
-        <div className="home-contaainer">
+        <div className="home-container">
             <div className='header-section'>
                 <header>
                     <h1>
@@ -26,9 +26,18 @@ function Events({ events }) {
                     <h1 className='event-header'>Wydarzenia wkrótce</h1>
                 </header>
                 <EventsList events={events} />
-                <Link to={{}} className='btn-secondary events-btn shadow'>
+                {/* <Link to={{}} className='btn-secondary events-btn shadow'>
                     Zobacz więcej
-                </Link>
+                </Link> */}
+            </div>
+            <div className='event-section'>
+                <header>
+                    <h1 className='event-header'>Archiwum wydarzeń</h1>
+                </header>
+                <EventsList events={events} />
+                {/* <Link to={{}} className='btn-secondary events-btn shadow'>
+                    Zobacz więcej
+                </Link> */}
             </div>
         </div>
     )
