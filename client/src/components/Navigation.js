@@ -8,6 +8,7 @@ function Navigation({ isLoged, handleLogin }) {
 		event.preventDefault();
 		localStorage.removeItem('AuthToken');
 		handleLogin(false);
+		window.location = '/';
 	}
     return (
         <nav className="navigation shadow">

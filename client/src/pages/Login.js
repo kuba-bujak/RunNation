@@ -19,7 +19,8 @@ function Login({ handleLogin }) {
             localStorage.setItem("AuthToken", token);
             setMessage(res.data.message);
             setTimeout(() => {
-                navigate(`/wydarzenia`, { replace: true });
+                // navigate(`/wydarzenia`, { replace: true });
+                window.location = '/';
             }, 2000)
         }).catch((err) => {
             setMessage(err.response.data.message);
