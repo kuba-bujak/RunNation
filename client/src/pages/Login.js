@@ -1,14 +1,41 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
+import FormInput from '../components/FormInput';
 
 function Login({ handleLogin }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const navigate = useNavigate();
+    const [values, setValues] = useState({
+        username: "",
+        password: ""
+    })
+
+    const inputs = [
+        {
+            id: 1,
+            name: "username",
+            type: "text",
+            placeholder: "Nazwa użytkownika",
+            label: "Nazwa użytkownika",
+            icon: "fa fa-user",
+            errorMessage: "Nazwa użytkownika powinna zawierać od 3 do 16 znaków",
+            pattern: "^[A-Za-z0-9]{3,16}$",
+            required: true
+        },
+        {
+            id: 2,
+            name: "password",
+            type: "text",
+            placeholder: "Hasło",
+            label: "Hasło",
+            icon: "fa fa-key",
+            errorMessage: "Hasło musi mieć od 8 do 20 znaków i zawierać przynajmniej 1 literę, 1 cyfrę i 1 znak specjalny",
+            pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+            required: true
+        }
+    ]
 
     const userLogin = async (username, password) => {
         await axios.post('/api/users/login', {
@@ -29,19 +56,25 @@ function Login({ handleLogin }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        userLogin(username, password);
+        const data = new FormData(event.target);
+        console.log(Object.fromEntries(data.entries()));
+        userLogin(values.username, values.password);
         handleLogin(true);
     } 
 
-    const handleChangeUsername = (event) => {
-        setUsername(event.target.value);
+    // const handleChangeUsername = (event) => {
+    //     setUsername(event.target.value);
+    // }
+
+    // const handleChangePassword = (event) => {
+    //     setPassword(event.target.value);
+    // }
+
+    const onChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value })
     }
 
-    const handleChangePassword = (event) => {
-        setPassword(event.target.value);
-    }
-
-
+    console.log(values);
 
     return (
         <div className="form-section">
@@ -50,20 +83,36 @@ function Login({ handleLogin }) {
                  <header className="form-header">
                     <h1>Logowanie</h1>
                 </header>
-                <div className="row">
-                    <h4>Nazwa użytkownika</h4>
+             
+                    {/* <label htmlFor={'username'} className="input-label">Nazwa użytkownika</label>
                     <div className="input-group input-group-icon">
-                        <input type="text" placeholder="Nazwa użytkownika" value={username} onChange={handleChangeUsername} required/>
+                        <input type="text" name={'username'} placeholder="Nazwa użytkownika" value={username} onChange={handleChangeUsername} id="username" minLength="2" custommaxlength="16" autoFocus required/>
                         <div className="input-icon"><i className="fa fa-user"></i></div>
+                        <span className="error-icon hidden">
+							<i className="fa-solid fa-circle-exclamation"></i>
+						</span>
+						<span className="check-icon hidden">
+							<i className="fa-solid fa-circle-check"></i>
+						</span>
+						<div className="error-message">{username}</div>
                     </div>
-                    <h4>Hasło</h4>
+                    <label htmlFor={'password'} className="input-label">Hasło</label>
                     <div className="input-group input-group-icon">
-                        <input type="password" placeholder="Hasło" value={password} onChange={handleChangePassword} required/>
+                        <input type="password" name={'password'} id='password' placeholder="Hasło" value={password} onChange={handleChangePassword} required/>
                         <div className="input-icon"><i className="fa fa-key"></i></div>
-                    </div>
-                </div>
-                <button type="submit" className="btn form-btn">Zaloguj</button>
-                <div className="row">
+                    </div> */}
+
+                    {inputs.map((input) => (
+                        <FormInput 
+                            key={input.id} 
+                            {...input}
+                            value={values[input.name]} 
+                            onChange={onChange}
+                        />
+                    ))}
+                
+                <div className="buttons-row">
+                    <button type="submit" className="btn form-btn">Zaloguj</button>
                     <Link to={'/rejestracja'} className="register-link">Załóż konto</Link>
                 </div>
             </form>
