@@ -55,8 +55,8 @@ function EventDetails({ onDelete }) {
         ratings.push(<AiFillStar />)
     }
 
-    const deleteEvent = (id) => {
-        const response = axios.delete(`/api/events/${id}`);
+    const deleteEvent = async (id) => {
+        const response = await axios.delete(`/api/events/${id}`);
         console.log(response);
         onDelete(id);
         navigate(`/wydarzenia`, { replace: true });

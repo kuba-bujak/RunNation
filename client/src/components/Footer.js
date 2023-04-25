@@ -5,7 +5,7 @@ function Footer() {
         <footer>
 		<div className="row footer-row">
 			<div className="footer-brand">
-				<Link to={{}}>
+				<Link to={'/'}>
 					<h2 className="footer-brand__title">RunNation</h2>
 				</Link>
 			</div>

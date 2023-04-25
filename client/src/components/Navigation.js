@@ -39,8 +39,8 @@ function Navigation({ isLoged, handleLogin }) {
 					<Link className={location.pathname === '/logowanie' ? 'nav-link active' : 'nav-link'} to={'/logowanie'}>Logowanie</Link>
 				</li> :
 				<li className="nav-item">
-					<form>
-						<button className={'nav-link nav-link-logout'} onClick={handleLogout}>Wyloguj</button>
+					<form onSubmit={handleLogout}>
+						<button className={'nav-link nav-link-logout'}>Wyloguj</button>
 					</form>
 				</li>
 				}
