@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,8 +11,33 @@ function EventCreate({ onCreate }) {
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+    const authToken = localStorage.getItem('AuthToken');
 
     const navigate = useNavigate();
+
+    const isAdminGetter = async () => {
+        const response = await axios.get(`/api/users/current`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.data.role === 'admin') {
+            setIsAdmin(true);
+        } else {
+            setIsAdmin(false);
+            navigate(`/logowanie`, { replace: true });
+        }
+    }
+
+    useEffect(() => {
+        if (authToken) {
+            isAdminGetter();
+        } else {
+            navigate(`/logowanie`, { replace: true });
+        }
+    }, []);
 
     const createSportEvent = async (title, location, image, rating, description, day, month, year) => {
         const date =  new Date(`${year}-${month}-${day}`);
@@ -22,12 +47,17 @@ function EventCreate({ onCreate }) {
             image,
             rating,
             description,
-            date
-          })
+            date 
+        },{
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        })
         onCreate({title, location, image, rating, description, date});
         setTimeout(() => {
-            navigate(`/wydarzenia`, { replace: true });
-        }, 2000);
+            window.location = '/wydarzenia';
+        }, 1000);
         
     }
 
