@@ -18,7 +18,7 @@ function ReviewAdd({ onCreate, id }) {
             <header className="form-header">
                     <h1>Dodaj komentarz</h1>
                 </header>
-            <textarea rows={5} placeholder="Komentarz" value={comment} onChange={handleChangeComment}></textarea>
+            <textarea rows={5} placeholder="Komentarz" value={comment} onChange={handleChangeComment} required></textarea>
             <button className="btn form-btn">Dodaj</button>
         </form>
     )
