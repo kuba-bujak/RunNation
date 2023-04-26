@@ -1,4 +1,4 @@
-function ModalShow({ onClose ,onDelete, eventId }) {
+function ModalShow({ onClose, onDelete, eventId }) {
 	return (
 		<div>
 			<div className="modal-header">
