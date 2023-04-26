@@ -39,7 +39,7 @@ function Register() {
             label: "Adres Email",
             icon: "fa fa-envelope",
             errorMessage: "Adres email musi zawierać poprawny format",
-            pattern: "[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+([-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*([-a-zA-Z0-9_]+)*([cC][oO][mM]))(:[0-9]{1,5})?",
+            pattern: "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])",
             required: true
         },
         {
@@ -175,9 +175,8 @@ function Register() {
                         />
                     ))}
 
-
-                <button type="submit" className="btn form-btn">Załóż konto</button>
-                <div className="row">
+                <div className="buttons-row">
+                    <button type="submit" className="btn form-btn">Załóż konto</button>
                     <Link to={'/logowanie'} className="register-link">Zaloguj się</Link>
                 </div>
             </form>
