@@ -39,7 +39,7 @@ function Register() {
             label: "Adres Email",
             icon: "fa fa-envelope",
             errorMessage: "Adres email musi zawierać poprawny format",
-            pattern: "[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(\.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.([cC][oO][mM]))(:[0-9]{1,5})?",
+            pattern: "[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+([-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*([-a-zA-Z0-9_]+)*([cC][oO][mM]))(:[0-9]{1,5})?",
             required: true
         },
         {
@@ -129,7 +129,7 @@ function Register() {
     return (
         <div className="form-section" id="registration-form">
             <div className="flashMessage">{message}</div>
-            <form className="container shadow" onSubmit={handleSubmit} noValidate>
+            <form className="container shadow" onSubmit={handleSubmit}>
                  <header className="form-header">
                     <h1>Rejestracja</h1>
                 </header>
