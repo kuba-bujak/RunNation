@@ -27,7 +27,7 @@ function Login({ handleLogin }) {
         {
             id: 2,
             name: "password",
-            type: "text",
+            type: "password",
             placeholder: "Hasło",
             label: "Hasło",
             icon: "fa fa-key",
@@ -56,8 +56,8 @@ function Login({ handleLogin }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.target);
-        console.log(Object.fromEntries(data.entries()));
+        // const data = new FormData(event.target);
+        // console.log(Object.fromEntries(data.entries()));
         userLogin(values.username, values.password);
         handleLogin(true);
     } 
@@ -74,12 +74,10 @@ function Login({ handleLogin }) {
         setValues({ ...values, [e.target.name]: e.target.value })
     }
 
-    console.log(values);
-
     return (
         <div className="form-section">
             <div className="flashMessage">{message}</div>
-            <form className="container shadow" onSubmit={handleSubmit}>
+            <form className="container shadow" onSubmit={handleSubmit} noValidate>
                  <header className="form-header">
                     <h1>Logowanie</h1>
                 </header>
