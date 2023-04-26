@@ -3,11 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import ReviewList from "../Reviews/ReviewList";
+import Modal from "react-overlays/Modal";
+import ModalShow from "../ModalShow";
 
 function EventDetails({ onDelete }) {
     const [event, setEvent] = useState({});
     const [eventDate, setEventDate] = useState('');
     const [eventReviews, setEventReviews] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
     const authToken = localStorage.getItem('AuthToken');
@@ -56,11 +59,19 @@ function EventDetails({ onDelete }) {
     }
 
     const deleteEvent = async (id) => {
-        const response = await axios.delete(`/api/events/${id}`);
-        console.log(response);
+        const response = await axios.delete(`/api/events/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
         onDelete(id);
         navigate(`/wydarzenia`, { replace: true });
     }
+
+    const handleModalClose = () => setShowModal(false);
+
+    const renderBackdrop = (props) => <div className="backdrop" {...props} />
 
     return (
         <div className="event-page-container">
@@ -92,8 +103,19 @@ function EventDetails({ onDelete }) {
                     {isAdmin &&
                     <div className="card-footer">
                         <Link to={`/wydarzenia/${event._id}/edycja`} className="event-btn edit-btn">Edytuj</Link>
-                        <button onClick={() => deleteEvent(event._id)} className="event-btn delete-btn">Usuń</button>
+                        {/* <button onClick={() => deleteEvent(event._id)} className="event-btn delete-btn">Usuń</button> */}
+                        <button type="button" className="event-btn delete-btn" onClick={() => setShowModal(true)}>
+                            Usuń
+                        </button>
                     </div>}
+                    <Modal
+                        className="modal"
+                        show={showModal}
+                        onHide={handleModalClose}
+                        renderBackdrop={renderBackdrop}
+                    >
+                        <ModalShow onClose={handleModalClose} onDelete={deleteEvent} eventId={event._id}/>
+                    </Modal>
                 </div>
             </div>
             <div className="comments-section">
