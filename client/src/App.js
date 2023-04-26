@@ -22,13 +22,14 @@ function App() {
     const [sortedEvents, setSortedEvents] = useState([]);
     const [futureAllEvents, setFutureAllEvents] = useState([]);
     const [isLoged, setIsLoged] = useState(false);
+    const authToken = localStorage.getItem('AuthToken');
 
     const isUserLoged = () => {
-        const authToken = localStorage.getItem('AuthToken');
         if (authToken) {
             setIsLoged(true);
         }
-    }    
+    }
+
 
     const fetchEvents = async () => {
         const response = await axios.get('/api/events');
@@ -140,13 +141,14 @@ function App() {
                     <Route exact path="/" element={<Home events={sortedEvents} />} />
                     <Route path="/o-nas" element={<WorkingInProgress />} />
                     <Route path="/wydarzenia" element={<Events events={futureAllEvents} />} />
-                    <Route path="/wydarzenia/:id" element={<EventDetails onDelete={deleteEvent} />} />
+                    
                     <Route path="/kursy" element={<WorkingInProgress />} />
                     <Route path="/kontakt" element={<WorkingInProgress />} />
                     <Route path="/galeria" element={<WorkingInProgress />} />
                     <Route path="/rejestracja" element={<Register />} />
                     <Route path="/logowanie" element={<Login handleLogin={setIsLoged}/>} />
-                    <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent} />} />
+                    <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent}/>} />
+                    <Route path="/wydarzenia/:id" element={<EventDetails onDelete={deleteEvent} />} />
                     <Route path="/wydarzenia/:id/edycja" element={<EventEdit onEdit={editEvent} />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
