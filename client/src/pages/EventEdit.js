@@ -11,9 +11,34 @@ function EventEdit({ onEdit }) {
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+    const authToken = localStorage.getItem('AuthToken');
     
     const { id } = useParams();
     const navigate = useNavigate();
+    
+    const isAdminGetter = async () => {
+        const response = await axios.get(`/api/users/current`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.data.role === 'admin') {
+            setIsAdmin(true);
+        } else {
+            setIsAdmin(false);
+            navigate(`/logowanie`, { replace: true });
+        }
+    }
+
+    useEffect(() => {
+        if (authToken) {
+            isAdminGetter();
+        } else {
+            navigate(`/logowanie`, { replace: true });
+        }
+    }, []);
 
     const setEvent = (event) => {
         setTitle(event.title);
@@ -46,7 +71,12 @@ function EventEdit({ onEdit }) {
             rating,
             description,
             date
-          })
+          },{
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        })
 
           onEdit(id, {title, location, date, description, image, rating});
           navigate(`/wydarzenia/${id}`, { replace: true });
@@ -81,14 +111,6 @@ function EventEdit({ onEdit }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         editEvent(title, location, image, rating, description, day, month, year);
-        setTitle('');
-        setLocation('');
-        setImage('');
-        setRating('');
-        setDescription('');
-        setDay('');
-        setMonth('');
-        setYear('');
     } 
 
 
