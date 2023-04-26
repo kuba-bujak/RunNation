@@ -77,7 +77,7 @@ function Login({ handleLogin }) {
     return (
         <div className="form-section">
             <div className="flashMessage">{message}</div>
-            <form className="container shadow" onSubmit={handleSubmit} noValidate>
+            <form className="container shadow" onSubmit={handleSubmit}>
                  <header className="form-header">
                     <h1>Logowanie</h1>
                 </header>
