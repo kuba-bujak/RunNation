@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Events = require('../models/events');
 const events = require('./events');
+require('dotenv').config();
 
 mongoose.set('strictQuery', true);
 
-mongoose.connect('mongodb://0.0.0.0:27017/projekt-kierunkowy-2', {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
 	useUnifiedTopology: true
 })

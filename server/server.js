@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 mongoose.set('strictQuery', true);
 
-mongoose.connect('mongodb://0.0.0.0:27017/projekt-kierunkowy-2', {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
 	useUnifiedTopology: true
 })
