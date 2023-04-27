@@ -2,14 +2,14 @@ import { useState } from 'react';
 
 const FormInput = (props) => {
 	const [focused, setFocused] = useState(false);
-	const { label, name, type,errorMessage, onChange, id, icon, ...inputProps} = props;
+	const { label, name, type, errorMessage, onChange, id, icon, ...inputProps} = props;
 
 	const handleFocus = (e) => {
 		setFocused(true);
 	}
 	
  	return (
-		<div className="row">
+		<div className={ props.class ? props.class : 'row' }>
 			<label htmlFor={name} className="input-label">{label}</label>
          <div className="input-group input-group-icon">
 				{type==="select" 
@@ -22,6 +22,7 @@ const FormInput = (props) => {
 				: <input 
 				id={name} 
 				name={name} 
+				type={type}
 				{...inputProps} 
 				onChange={onChange} 
 				onBlur={handleFocus} 
