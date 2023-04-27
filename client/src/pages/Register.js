@@ -90,13 +90,14 @@ function Register() {
         }
     ]
 
-    const createUser = async (username, password, email, role) => {
+    const createUser = async (username, email, role, password) => {
         await axios.post(`/api/users/register`, {
             username,
             email,
             role,
             password
         }).then((res) => {
+            console.log(res)
             setMessage(res.data.message);
             setTimeout(() => {
                 navigate(`/logowanie`, { replace: true });
