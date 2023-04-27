@@ -75,7 +75,8 @@ p {
 .navbar-nav {
 	display: flex;
 	gap: 1em;
-	/* justify-content: center; */
+	justify-content: center;
+	align-items: center;
 }
 
 .nav-item {
@@ -212,6 +213,7 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 5%;
 }
 
 .header-section header {
@@ -514,7 +516,7 @@ footer {
 	align-items: center;
 	width: 100%;
 	color: #2C514C;
-	padding-top: 80px;
+	padding: calc(80px + 4rem) 0 4rem 0;
 }
 
 .flashMessage {
@@ -750,11 +752,19 @@ h4 {
 }
 
 .nav-link-logout {
-	background-color: inherit;
-	border: none;
-	color: inherit;
+	border-radius: 3rem;
+	width: fit-content;
+	padding: 0.4rem 1rem;
+	transition: all 0.5s ease;
+	border: 2px solid transparent;
+	font-weight: bold;
 	cursor: pointer;
-	font-size: 0.6rem;
+	font-family: 'Lato', sans-serif;
+}
+
+.nav-link-logout:hover {
+	border-color: #fca311;
+	color: #fca311;
 }
 
 .input-label {
