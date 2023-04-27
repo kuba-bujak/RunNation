@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const FormInput = (props) => {
 	const [focused, setFocused] = useState(false);
-	const { label, name, errorMessage, onChange, id, icon, ...inputProps} = props;
+	const { label, name, type,errorMessage, onChange, id, icon, ...inputProps} = props;
 
 	const handleFocus = (e) => {
 		setFocused(true);
@@ -12,11 +12,12 @@ const FormInput = (props) => {
 		<div className="row">
 			<label htmlFor={name} className="input-label">{label}</label>
          <div className="input-group input-group-icon">
-				{name==="role" 
+				{type==="select" 
 				?  <select name={name} required value={props.value} onChange={onChange}>
-				      <option value={'zawodnik'}>Zawodnik</option>
-				      <option value={'trener'}>Trener</option>
-				      <option value={'kibic'}>Kibic</option>
+					{props.options.map((option) => (
+						<option value={option.option}>{option.value}</option>
+					))}
+				      
 				   </select> 
 				: <input 
 				id={name} 

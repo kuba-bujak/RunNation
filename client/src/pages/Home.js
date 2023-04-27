@@ -12,10 +12,10 @@ function Home({ events }) {
             <div className='header-section'>
                 <header>
                     <h1>
-                        RunNation
+                        Witaj na RunNation
                     </h1>
                     <h3>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod molestie fringilla. Quisque vel vehicula elit, a finibus nisl. Mauris id justo efficitur, tempor enim et, finibus arcu
+                        Serwisie dla biegaczy i miłośników sportów biegowych!         
                     </h3>
                     <Link to={'logowanie'} className="btn join-us-btn">
                         Dołącz do nas
@@ -30,13 +30,16 @@ function Home({ events }) {
                             <h3 className='about-header'>Skąd pomysł?</h3>
                         </header>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod molestie fringilla. Quisque vel vehicula elit, a finibus nisl. Mauris id justo efficitur, tempor enim et, finibus arcu. Nulla accumsan pharetra tempor. Etiam convallis malesuada ipsum. Morbi ultricies a libero a facilisis. In eu blandit turpis. Curabitur dictum nunc placerat, malesuada massa id, interdum ligula. Donec sed dignissim nulla. Praesent imperdiet sapien lorem, ut fermentum tellus eleifend non. Fusce faucibus ex quis neque varius, a suscipit ligula ultricies. Aliquam erat diam, pellentesque sit amet interdum pretium, suscipit imperdiet leo. Aenean hendrerit est at ante posuere, vitae iaculis ante pulvinar.
+                        RunNation to serwis internetowy skupiający się na tematyce lekkoatletycznej. Jesteśmy pasjonatami biegania i wiemy, jak ważne jest dla naszych użytkowników zdrowie, kondycja oraz rozwój osobisty. Dlatego stworzyliśmy miejsce, które pozwala na łatwe i przyjemne korzystanie z narzędzi, aplikacji oraz społeczności, które pozwolą Ci osiągać cele w dziedzinie sportu.
                         </p>
                         <p>
-                            Sed libero metus, convallis eget dapibus eget, vulputate et urna. Maecenas ac mauris id est euismod placerat at vitae eros. In hac habitasse platea dictumst. Curabitur arcu nibh, feugiat feugiat placerat in, malesuada convallis mi. Ut eget condimentum justo. Etiam et fringilla velit, lacinia auctor lorem. Nunc elementum dapibus arcu id mattis. Etiam vel magna condimentum, venenatis leo sed, mattis velit. Donec suscipit sed odio ut molestie. Donec magna eros, ultricies ac quam nec, facilisis pharetra turpis.
+                        W RunNation oferujemy wiele narzędzi i aplikacji, które pomogą Ci w codziennej aktywności fizycznej oraz śledzeniu swoich postępów. Nasza aplikacja do biegania umożliwia Ci rejestrowanie treningów, monitorowanie postępów oraz śledzenie swojego rywalizowania z innymi użytkownikami. Ponadto, posiadamy również narzędzia do planowania treningów, które pozwolą Ci na dostosowanie treningów do Twoich celów oraz możliwości.
                         </p>
                         <p>
-                            Phasellus scelerisque consequat ante. Suspendisse potenti. Cras at libero maximus, aliquet ipsum volutpat, facilisis nibh. Vestibulum porta, orci ac lacinia luctus, arcu metus aliquet felis, in tristique purus mi at justo. Quisque ex felis, vehicula sed blandit ac, aliquet eu eros. Nulla consectetur nibh vel ante vestibulum placerat ut ac lorem. Pellentesque maximus odio eu porta viverra. Proin porttitor maximus odio, id tempor risus venenatis ut. Mauris ac rhoncus diam, maximus aliquet est. Quisque pretium turpis non congue viverra. Pellentesque sem est, porttitor sit amet diam id, auctor sollicitudin ligula.
+                        RunNation to nie tylko narzędzia i aplikacje, ale przede wszystkim społeczność. Dzięki naszemu forum internetowemu oraz grupom dyskusyjnym możesz wymieniać się doświadczeniami, zadawać pytania i uzyskiwać wsparcie od innych biegaczy. Razem możemy osiągnąć więcej, dlatego zapraszamy do dołączenia do naszej społeczności!
+                        </p>
+                        <p>
+                        Jeśli masz jakiekolwiek pytania lub sugestie odnośnie naszego serwisu, zachęcamy do skontaktowania się z nami poprzez formularz kontaktowy lub bezpośrednio na nasze konto na mediach społecznościowych. Jesteśmy otwarci na wszelkie uwagi i chętnie Ci pomożemy!
                         </p>
                         <Link to={'/o-nas'} className="btn about-us-btn">
                             Dowiedz się więcej

@@ -50,7 +50,21 @@ function Register() {
             placeholder: "Stanowisko",
             icon: "fa-solid fa-user-tie",
             errorMessage: "Stanowisko musi być wybrane",
-            required: true
+            required: true,
+            options: [
+                {
+                    option: "zawodnik",
+                    value: "Zawodnik"
+                },
+                {
+                    option: 'trener',
+                    value: "Trener"
+                },
+                {
+                    option: "kibic",
+                    value: "Kibic"
+                }
+            ]
         },
         {
             id: 4,
@@ -96,8 +110,8 @@ function Register() {
         event.preventDefault();
         // const data = new FormData(event.target);
         // console.log(Object.fromEntries(data.entries()));
-        console.log(values);
-        // createUser(values.username, values.email, values.role, values.password);
+        // console.log(values);
+        createUser(values.username, values.email, values.role, values.password);
     } 
 
     // const handleChangeUsername = (event) => {
