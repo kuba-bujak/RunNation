@@ -23,6 +23,7 @@ function App() {
     const [futureAllEvents, setFutureAllEvents] = useState([]);
     const [isLoged, setIsLoged] = useState(false);
     const authToken = localStorage.getItem('AuthToken');
+    const [oldEvents, setOldEvents] = useState([]);
 
     const isUserLoged = () => {
         if (authToken) {
@@ -86,6 +87,21 @@ function App() {
                 };
             });
 
+        const oldEvents = events
+            .filter(event => new Date(event.date) < new Date())
+            .sort((a,b) => new Date(a.date) - new Date(b.date))
+            .map(event => {
+                const date = new Date(event.date);
+                const month = date.toLocaleString('default', { month: 'short' });
+                const day = date.getDate();
+                const year = date.getFullYear();
+                return {
+                    ...event,
+                    date: `${day} ${month} ${year}`
+                };
+            })
+
+        setOldEvents(oldEvents)
         setFutureAllEvents(futureAllEvents);
     } 
     
@@ -140,8 +156,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Home events={sortedEvents} />} />
                     <Route path="/o-nas" element={<WorkingInProgress />} />
-                    <Route path="/wydarzenia" element={<Events events={futureAllEvents} />} />
-                    
+                    <Route path="/wydarzenia" element={<Events events={futureAllEvents} oldEvents={oldEvents}/>} />
                     <Route path="/kursy" element={<WorkingInProgress />} />
                     <Route path="/kontakt" element={<WorkingInProgress />} />
                     <Route path="/galeria" element={<WorkingInProgress />} />

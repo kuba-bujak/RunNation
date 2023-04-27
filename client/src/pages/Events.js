@@ -3,7 +3,7 @@ import EventsList from "../components/Events/EventsList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Events({ events }) {
+function Events({ events, oldEvents }) {
     const authToken = localStorage.getItem('AuthToken');
     const [isAdmin, setIsAdmin] = useState(false);
 
@@ -61,7 +61,7 @@ function Events({ events }) {
                 <header>
                     <h1 className='event-header'>Archiwum wydarzeń</h1>
                 </header>
-                <EventsList events={events} />
+                <EventsList events={oldEvents.reverse()} />
                 {/* <Link to={{}} className='btn-secondary events-btn shadow'>
                     Zobacz więcej
                 </Link> */}
