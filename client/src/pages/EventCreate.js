@@ -64,13 +64,12 @@ function EventCreate({ onCreate }) {
             type: "number",
             placeholder: "DD",
             label: "Dzień",
-            icon: "fa fa-key",
+            icon: "fa-regular fa-calendar-days",
             errorMessage: "Dzień musi się znajdować w przedziale od 1 do 31",
             pattern: "^(0-9){2}$",
             min: 1,
             max: 31,
             required: true,
-            class: "col-third"
         },
         {
             id: 5,
@@ -78,7 +77,7 @@ function EventCreate({ onCreate }) {
             type: "number",
             placeholder: "MM",
             label: "Miesiąc",
-            icon: "fa fa-key",
+            icon: "fa-regular fa-calendar-days",
             errorMessage: "Miesiąc musi się znajdować w przedziale od 1 do 12",
             pattern: "^(0-9){2}$",
             min: 1,
@@ -91,7 +90,7 @@ function EventCreate({ onCreate }) {
             type: "number",
             placeholder: "YYYY",
             label: "Rok",
-            icon: "fa fa-key",
+            icon: "fa-regular fa-calendar-days",
             errorMessage: "Rok musi się znajdować w przedziale od 2022 do 2032",
             pattern: "^(0-9){4}$",
             min: 2022,
@@ -104,7 +103,7 @@ function EventCreate({ onCreate }) {
             type: "select",
             placeholder: "Ranga",
             label: "Ranga zawodów",
-            icon: "fa-solid fa-image",
+            icon: "fa-solid fa-star",
             errorMessage: "Ranga zawodów musi być wybrana",
             required: true,
             options: [
@@ -217,8 +216,8 @@ function EventCreate({ onCreate }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(values.title, values.location, values.image, values.rating, values.description, values.day, values.month, values.year);
-        // createSportEvent(values.title, values.location, values.image, values.rating, values.description, values.day, values.month, values.year);
+        // console.log(values.title, values.location, values.image, values.rating, values.description, values.day, values.month, values.year);
+        createSportEvent(values.title, values.location, values.image, values.rating, values.description, values.day, values.month, values.year);
         // setTitle('');
         // setLocation('');
         // setImage('');
