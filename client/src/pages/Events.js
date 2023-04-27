@@ -39,7 +39,7 @@ function Events({ events, oldEvents }) {
                         Wydarzenia
                     </h1>
                     <h3>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod molestie fringilla. Quisque vel vehicula elit, a finibus nisl. Mauris id justo efficitur, tempor enim et, finibus arcu
+                    Bądź na bieżąco z najnowszymi wydarzeniami sportowymi w Twojej okolicy! <br />
                     </h3>
                     {isAdmin && 
                         <Link to={`/wydarzenia/nowe`} className="btn join-us-btn">
