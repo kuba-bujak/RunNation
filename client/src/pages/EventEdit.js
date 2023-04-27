@@ -31,8 +31,8 @@ function EventEdit({ onEdit }) {
             placeholder: "Tytuł",
             label: "Tytuł",
             icon: "fa-solid fa-file-signature",
-            errorMessage: "Tytuł powinien zawierać od 3 do 40 znaków",
-            pattern: "^[A-Za-z0-9]{3,40}$",
+            errorMessage: "Tytuł powinien zawierać od 3 do 100 znaków",
+            pattern: "^[A-Za-z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ.- ]{3,100}$",
             required: true
         },
         {
@@ -43,7 +43,7 @@ function EventEdit({ onEdit }) {
             label: "Lokalizacja",
             icon: "fa-solid fa-location-dot",
             errorMessage: "Lokalizacja powinna zawierać od 3 do 20 znaków",
-            pattern: "^[A-Za-z0-9]{3,20}$",
+            pattern: "^[A-Za-z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ- ]{3,40}$",
             required: true
         },
         {
