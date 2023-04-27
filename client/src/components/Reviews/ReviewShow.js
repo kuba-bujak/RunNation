@@ -4,9 +4,6 @@ import { useState } from "react";
 function ReviewShow({ review, onEdit, onDelete, isAdmin }) {
     const [isEditClicked, setIsEditClicked] = useState(false);
     const [comment, setComment] = useState(review.comment);
-    const [showModal, setShowModal] = useState(false);
-    const [isDeleteClicked, setIsDeleteClicked] = useState(false);
-
     const handleIsEditClicked = (event) => {
         event.preventDefault();
         setIsEditClicked(!isEditClicked);
@@ -15,19 +12,13 @@ function ReviewShow({ review, onEdit, onDelete, isAdmin }) {
         }
     }
 
-    const handleModalClose = () => setShowModal(false);
-
     const handleChangeComment = (event) => {
         setComment(event.target.value);
     }
 
-    // const handleDeleteClicked = (event) => {
-    //     event.preventDefault();
-    //     onDelete(review._id);
-    // }
-
-    const handleIsDeleteClicked = () => {
-        setShowModal(true);
+    const handleDeleteClicked = (event) => {
+        event.preventDefault();
+        onDelete(review._id);
     }
 
     return (
@@ -48,15 +39,7 @@ function ReviewShow({ review, onEdit, onDelete, isAdmin }) {
                 <div className="time">
                     {review.createdAt}
                 </div>
-                {isAdmin && <ReviewButtons editClicked={handleIsEditClicked} isDeleteClicked={handleIsDeleteClicked}/>}
-                <Modal
-                        className="modal"
-                        show={showModal}
-                        onHide={handleModalClose}
-                        renderBackdrop={renderBackdrop}
-                    >
-                        <ModalShow onClose={handleModalClose} onDelete={deleteEvent} eventId={event._id}/>
-                    </Modal>
+                {isAdmin && <ReviewButtons editClicked={handleIsEditClicked} onDelete={handleDeleteClicked}/>}
             </div>
         </div>
     )
