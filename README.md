@@ -7,6 +7,8 @@ It is a type of sports service, where users can register / login.
 
 - Client -> React
 - Server -> Express
+- Database -> Serverless MongoDB
+- Dockerization + Content Delivery + Container as a service
 
 ## Installation
 
