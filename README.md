@@ -3,6 +3,11 @@
 Projekt-kierunkowy-2 was an application created for graduation project on university.
 It is a type of sports service, where users can register / login.
 
+## Technologies
+
+- Client -> React
+- Server -> Express
+
 ## Installation
 
 Use the package manager [npm].
