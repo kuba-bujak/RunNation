@@ -61,12 +61,11 @@ function ReviewList({ eventId, reviews, updateReviewList, isAdmin }) {
         return displayReviews.push(<ReviewShow review={review} key={review._id} onEdit={editReview} onDelete={deleteReview} isAdmin={isAdmin}/>)
     });
 }
-
     return (
         <div>
             {authToken && <ReviewAdd onCreate={createNewReview} id={eventId}/>}
             <React.Fragment>
-                {displayReviews.reverse()}
+                {displayReviews.length ? displayReviews : <h2 className='comments-header'>Brak komentarzy</h2>}
             </React.Fragment>
         </div>
     )

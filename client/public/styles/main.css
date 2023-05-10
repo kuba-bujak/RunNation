@@ -894,3 +894,7 @@ input:invalid[focused='true'] ~ .error-message {
   align-items: center;
   flex-direction: column;
 }
+
+.comments-header {
+	text-align: center;
+}
