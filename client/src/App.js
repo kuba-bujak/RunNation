@@ -40,7 +40,9 @@ function App() {
     } 
 
     useEffect(() => {
-        fetchEvents()
+        fetchEvents();
+        localStorage.removeItem('AuthToken');
+		setIsLoged(false);
     }, []);
 
     useEffect(() => {
@@ -157,7 +159,7 @@ function App() {
                     <Route exact path="/" element={<Home events={sortedEvents} />} />
                     <Route path="/o-nas" element={<WorkingInProgress />} />
                     <Route path="/wydarzenia" element={<Events events={futureAllEvents} oldEvents={oldEvents}/>} />
-                    <Route path="/kursy" element={<WorkingInProgress />} />
+                    <Route path="/kursy" element={<Courses />} />
                     <Route path="/kontakt" element={<WorkingInProgress />} />
                     <Route path="/galeria" element={<WorkingInProgress />} />
                     <Route path="/rejestracja" element={<Register />} />
