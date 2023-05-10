@@ -27,7 +27,6 @@ const createEvent = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error("Pola wydarzenia nie są poprawne")
     }
-
     res.json({ message: "Utworzono wydarzenie" })
 });
 
@@ -79,7 +78,6 @@ const editEvent = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error("Pola wydarzenia nie są poprawne");
     }
-
     res.json({ message: "Edytowano wydarzenie" });
 })
 

@@ -34,6 +34,11 @@ function Navigation({ isLoged, handleLogin }) {
 				<li className="nav-item">
 					<Link className={location.pathname === '/kontakt' ? 'nav-link active' : 'nav-link'} to={'/kontakt'} >Kontakt</Link>
 				</li>
+				{isLoged && 
+				<li className="nav-item">
+					<Link className={location.pathname === '/profil' ? 'nav-link active' : 'nav-link'} to={'/profil'} >Profil</Link>
+				</li>
+				}
 				{!isLoged ? 
 				<li className="nav-item">
 					<Link className={location.pathname === '/logowanie' ? 'nav-link active' : 'nav-link'} to={'/logowanie'}>Logowanie</Link>

@@ -21,14 +21,5 @@ const CourseSchema = new Schema({
   ]
 });
 
-CourseSchema.post('findOneAndDelete', async function (doc) {
-	if (doc) {
-		await User.deleteMany({
-			_id: {
-				$in: doc.users
-			}
-		})
-	}
-})
 
 module.exports = mongoose.model('Course', CourseSchema);

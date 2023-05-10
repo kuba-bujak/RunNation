@@ -114,7 +114,7 @@ function EventDetails({ onDelete }) {
                         onHide={handleModalClose}
                         renderBackdrop={renderBackdrop}
                     >
-                        <ModalShow onClose={handleModalClose} onDelete={deleteEvent} eventId={event._id}/>
+                        <ModalShow onClose={handleModalClose} onDelete={deleteEvent} elementId={event._id}/>
                     </Modal>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-function CourseShow({ course, registerUser, currentUser }) {
+function CourseShow({ course, registerUser, currentUser, isAdmin, whichToDelete }) {
 	const [date, setDate] = useState('');
 	const [isAdded, setIsAdded] = useState(false);
 	const matchUser = () => {
@@ -64,7 +65,15 @@ function CourseShow({ course, registerUser, currentUser }) {
 			<div className="course--container">
 				<header className="course--header course--header--added">
 					<h3 className="course--title">{course.title}</h3>
-					<button className="course-add-btn--added" onClick={handleIsClicked}><i className="fa-solid fa-check"></i></button>
+					<div className="icons">
+					{isAdmin && 
+						<>
+							<Link to={`/kursy/${course._id}/edycja`} className="course-add-btn course-edit-btn"><i className="fa-solid fa-pen-to-square"></i></Link>
+							<button className="course-add-btn course-delete-btn" onClick={() => whichToDelete(course._id)}><i className="fa-solid fa-trash"></i></button>
+						</>
+					}
+						<button className="course-add-btn--added" onClick={handleIsClicked}><i className="fa-solid fa-check"></i></button>
+					</div>
 				</header>
 				<div className="course--details">
 					<div className="course--details-element">
@@ -99,7 +108,15 @@ function CourseShow({ course, registerUser, currentUser }) {
 			<div className="course--container">
 				<header className="course--header">
 					<h3 className="course--title">{course.title}</h3>
-					<button className="course-add-btn" onClick={handleIsClicked}><i className="fa-solid fa-plus"></i></button>
+					<div className="icons">
+					{isAdmin && 
+						<>
+							<Link to={`/kursy/${course._id}/edycja`} className="course-add-btn course-edit-btn"><i className="fa-solid fa-pen-to-square"></i></Link>
+							<button className="course-add-btn course-delete-btn" onClick={() => whichToDelete(course._id)}><i className="fa-solid fa-trash"></i></button>
+						</>
+					}
+						<button className="course-add-btn" onClick={handleIsClicked}><i className="fa-solid fa-plus"></i></button>
+					</div>
 				</header>
 				<div className="course--details">
 					<div className="course--details-element">

@@ -2,12 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CourseList from "../components/Courses/CourseList";
+import Modal from "react-overlays/Modal";
+import ModalShow from "../components/ModalShow";
 const authToken = localStorage.getItem('AuthToken');
 
 function Courses() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [courses, setCourses] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const [currentUser, setCurrentUser] = useState('');
+    const [courseId, setCourseId] = useState('');
     const navigate = useNavigate();
 
     const fetchEvents = async () => {
@@ -51,8 +55,29 @@ function Courses() {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response);
     }
+
+    const deleteCourse = async (id) => {
+        const response = await axios.delete(`/api/courses/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        setCourses(oldValues => {
+            return oldValues.filter(course => course._id !== id)
+        })
+        setShowModal(false);
+    }
+
+    const whichToDelete = (courseID) => {
+        setShowModal(true);
+        setCourseId(courseID);
+    }
+
+    const handleModalClose = () => setShowModal(false);
+
+    const renderBackdrop = (props) => <div className="backdrop" {...props} />
 
     return (
         <div className="home-container">
@@ -75,11 +100,20 @@ function Courses() {
                 <header>
                     <h1 className='event-header'>Nadchodzące kursy</h1>
                 </header>
-                <CourseList courses={courses} registerUser={registerUser} currentUser={currentUser}/>
-                {/* <Link to={{}} className='btn-secondary events-btn shadow'>
-                    Zobacz więcej
-                </Link> */}
+                <CourseList courses={courses} registerUser={registerUser} currentUser={currentUser} isAdmin={isAdmin} whichToDelete={whichToDelete}/>
+                
             </div>
+            <Modal
+                className="modal"
+                show={showModal}
+                onHide={handleModalClose}
+                renderBackdrop={renderBackdrop}
+            >
+            <ModalShow 
+                onClose={handleModalClose} 
+                onDelete={deleteCourse}
+                elementId={courseId}/>
+            </Modal>
         </div>
     )
 }
