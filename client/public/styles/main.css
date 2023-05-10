@@ -943,7 +943,19 @@ input:invalid[focused='true'] ~ .error-message {
 	border: none;
 	color: #fca311;
 	font-size: 1.2rem;
-	transition: ease 1s;
+	transition: ease 0.5s;
+}
+
+.course-edit-btn {
+	margin-right: 0.4rem;
+	color: #F1E9DB;
+	font-size: 1rem;
+}
+
+.course-delete-btn {
+	margin-right: 0.4rem;
+	color: #F1E9DB;
+	font-size: 1rem;
 }
 
 .course-add-btn--added {
@@ -956,6 +968,16 @@ input:invalid[focused='true'] ~ .error-message {
 .course-add-btn:hover {
 	transform: rotate(180deg);
 	cursor: pointer;
+}
+
+.course-edit-btn:hover {
+	transform: rotate(0);
+	color: rgb(0, 140, 255);
+}
+
+.course-delete-btn:hover {
+	transform: rotate(0);
+	color: rgb(255, 0, 0);
 }
 
 .course-add-btn--added:hover {
