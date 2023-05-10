@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import FormInput from '../components/FormInput';
 
@@ -11,6 +11,10 @@ function Login({ handleLogin }) {
         username: "",
         password: ""
     })
+
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }, []);
 
     const inputs = [
         {
