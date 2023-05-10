@@ -895,6 +895,89 @@ input:invalid[focused='true'] ~ .error-message {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .comments-header {
 	text-align: center;
 }
+=======
+.courses-box {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+}
+
+.course-element {
+	border: 2px solid #fca311;
+	padding: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 2rem;
+	background-color: #2C514C;
+	border-radius: 1rem;
+}
+
+.course-element-added {
+	border: 2px solid #0e9730;
+	opacity: 0.8;
+
+}
+
+.course--image {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 0.5rem;
+}
+
+.course--header {
+	border-bottom: 1px solid #fca311;
+	color: #fca311;
+	text-align: left;
+	padding-bottom: 0.4rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.course--header--added {
+	color: #0e9730;
+	border-bottom: 1px solid #0e9730;
+}
+
+.course-add-btn {
+	background: transparent;
+	border: none;
+	color: #fca311;
+	font-size: 1.2rem;
+	transition: ease 1s;
+}
+
+.course-add-btn--added {
+	background: transparent;
+	border: none;
+	font-size: 1.2rem;
+	color: #0e9730;
+}
+
+.course-add-btn:hover {
+	transform: rotate(180deg);
+	cursor: pointer;
+}
+
+.course-add-btn--added:hover {
+	cursor:not-allowed ;
+}
+
+.course--details {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	text-align: left;
+	gap: 0.5rem;
+	padding: 0.5rem 0;
+}
+
+.course--details-element {
+	display: flex;
+	gap: 0.5rem;
+}
+
+>>>>>>> courses

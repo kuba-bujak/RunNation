@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Events = require('../models/events');
 const events = require('./events');
+const courses = require('./courses');
+const Courses = require('../models/courses');
 require('dotenv').config();
 
 mongoose.set('strictQuery', true);
@@ -18,6 +20,7 @@ db.once('open', () => {
 
 const seedDB = async () => {
     await Events.deleteMany({});
+    await Courses.deleteMany({});
 
     for (let i = 0; i < events.length; i++) {
         const event = new Events({
@@ -29,6 +32,22 @@ const seedDB = async () => {
             rating: events[i].rating
         });
         await event.save();
+    }
+
+    for (let i = 0; i < courses.length; i++) {
+        const course = new Courses({
+            title: courses[i].title,
+            dateFrom: new Date(courses[i].dateFrom),
+            dateTo: new Date(courses[i].dateTo),
+            hoursFrom: courses[i].hoursFrom,
+            hoursTo: courses[i].hoursTo,
+            language: courses[i].language,
+            level: courses[i].level,
+            location: courses[i].location,
+            coach: courses[i].coach,
+            img: courses[i].img,
+        });
+        await course.save();
     }
 }
 

@@ -21,6 +21,7 @@ db.once('open', () => {
 
 app.use('/api/events', require('./routes/eventRoutes'));
 app.use('/api/events/:id/reviews', require('./routes/reviewRoutes'));
+app.use('/api/courses', require('./routes/courseRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 
 app.listen(process.env.PORT, () => {
