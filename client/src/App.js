@@ -16,6 +16,8 @@ import EventEdit from "./pages/EventEdit";
 import Login from "./pages/Login";
 import WorkingInProgress from "./pages/WorkingInProgress";
 import NotFound from "./NotFound";
+import CourseCreate from "./pages/CourseCreate";
+import CourseEdit from "./pages/CourseEdit";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -41,8 +43,6 @@ function App() {
 
     useEffect(() => {
         fetchEvents();
-        localStorage.removeItem('AuthToken');
-		setIsLoged(false);
     }, []);
 
     useEffect(() => {
@@ -160,6 +160,8 @@ function App() {
                     <Route path="/o-nas" element={<WorkingInProgress />} />
                     <Route path="/wydarzenia" element={<Events events={futureAllEvents} oldEvents={oldEvents}/>} />
                     <Route path="/kursy" element={<Courses />} />
+                    <Route path="/kursy/nowe" element={<CourseCreate />} />
+                    <Route path="/kursy/:id/edycja" element={<CourseEdit />} />
                     <Route path="/kontakt" element={<WorkingInProgress />} />
                     <Route path="/galeria" element={<WorkingInProgress />} />
                     <Route path="/rejestracja" element={<Register />} />
