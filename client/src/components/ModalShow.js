@@ -1,4 +1,4 @@
-function ModalShow({ onClose, onDelete, eventId }) {
+function ModalShow({ onClose, onDelete, elementId }) {
 	return (
 		<div>
 			<div className="modal-header">
@@ -16,7 +16,7 @@ function ModalShow({ onClose, onDelete, eventId }) {
 				<button className="event-btn edit-btn" onClick={onClose}>
 					Zamknij
 				</button>
-				<button className="event-btn delete-btn" onClick={() => onDelete(eventId)}>
+				<button className="event-btn delete-btn" onClick={() => onDelete(elementId)}>
 					Usuń
 				</button>
 			</div>
