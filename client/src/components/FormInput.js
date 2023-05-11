@@ -20,6 +20,7 @@ const FormInput = (props) => {
 				      
 				   </select> 
 				: <input 
+				className='formInput'
 				id={name} 
 				name={name} 
 				type={type}
