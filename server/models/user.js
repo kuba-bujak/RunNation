@@ -3,6 +3,12 @@ const Schema = mongoose.Schema;
 const Course = require('./courses');
 
 const UserSchema = new Schema({
+    firstName: {
+        type: String,
+    },
+    surname: {
+        type: String,
+    },
     username: {
         type: String,
         required: [true, "Nazwa użytkownika wymagana"],
