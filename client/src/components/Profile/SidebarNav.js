@@ -1,4 +1,4 @@
-function sidebarNav({ changeOption, username }) {
+function sidebarNav({ changeOption, username, avatar }) {
 
 	const handleClick = (event) => {
 		const target = event.target;
@@ -16,7 +16,7 @@ function sidebarNav({ changeOption, username }) {
 
 	return (
 		<nav className="sidebar-nav">
-				<div className="sidebar-image">
+				<div className="sidebar-image" style={{ background: `url(${avatar})  no-repeat center / cover` }}>
 				</div>
 				<p className="nickname-header">@{username}</p>
 				<ul className="sidebar-nav__list">
@@ -28,17 +28,9 @@ function sidebarNav({ changeOption, username }) {
 						<i className="fa-solid fa-person-running"></i>
 						Kursy
 					</li>
-					<li onClick={handleClick} className="sidebar-element" data-title="image">
-						<i className="fa-solid fa-image"></i>
-						Zdjęcie
-					</li>
 					<li onClick={handleClick} className="sidebar-element" data-title="password">
 						<i className="fa-solid fa-lock"></i>
 						Hasło
-					</li>
-					<li onClick={handleClick} className="sidebar-element" data-title="agreements">
-						<i className="fa-solid fa-file-contract"></i>
-						Zgody
 					</li>
 				</ul>
 			</nav>

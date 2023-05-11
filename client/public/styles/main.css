@@ -557,6 +557,10 @@ h4 {
 	font-family: 'Lato', sans-serif;
   }
 
+  input[type="checkbox"] + label:before {
+		background-color: #2C514C;
+  }
+
   input:focus,
   textarea:focus {
 	outline: 0;
@@ -1047,8 +1051,6 @@ input:invalid[focused='true'] ~ .error-message {
 .sidebar-image {
 	width: 150px;
 	height: 150px;
-	background: url('https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80') no-repeat center;
-	background-size: cover;
 	border-radius: 100%;
 	justify-self: center;
 	align-self: center;
@@ -1079,6 +1081,7 @@ input:invalid[focused='true'] ~ .error-message {
 	align-self: center;
 	justify-self: center;
 	width: 100%;
+	padding-bottom: 1rem;
 }
 
 .profile-input-group {
@@ -1094,6 +1097,7 @@ input:invalid[focused='true'] ~ .error-message {
 	color: #2C514C;
 	font-size: 1rem;
 	transition: all 0.5s ease;
+	align-self: flex-start;
 }
 
 .profile-edit-btn:hover {
@@ -1103,12 +1107,15 @@ input:invalid[focused='true'] ~ .error-message {
 .input-profile {
 	border: none;
 	border-bottom: 1px solid #2C514C;
-	overflow: hidden;
 	background-color: inherit;
 	font-size: 1rem;
 	line-height: 1.4;
 	padding-left: 0.4rem;
 	color: #2C514C;
+}
+
+.profile-text {
+	word-break: break-word;
 }
 
 .profile-input-group p {
@@ -1151,3 +1158,13 @@ input:invalid[focused='true'] ~ .error-message {
 .course-profile-element .course--container .course--header {
 	margin-bottom: 0.6rem;
 }
+
+.input-profile-label {
+	font-weight: bold;
+}
+
+.agreement-btn {
+	background-color: #2C514C;
+}
+
+

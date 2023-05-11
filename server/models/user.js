@@ -27,6 +27,15 @@ const UserSchema = new Schema({
         type: String,
         required: [true, "Hasło wymagane"]
     },
+    avatar: {
+        type: String,
+    },
+    rodo: {
+        type: Boolean,
+    },
+    newsletter: {
+        type: Boolean
+    },
     courses: [
 		{
 			 type: Schema.Types.ObjectId,

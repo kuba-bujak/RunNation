@@ -51,7 +51,7 @@ function Login({ handleLogin }) {
             setMessage(res.data.message);
             setTimeout(() => {
                 // navigate(`/wydarzenia`, { replace: true });
-                window.location = '/';
+                window.location = '/profil';
             }, 2000)
         }).catch((err) => {
             setMessage(err.response.data.message);

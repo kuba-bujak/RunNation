@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function ProfileInput({ label, value, id, placeholder, onChange }) {
+function ProfileInput({ label, value, id, placeholder, onChange, type }) {
 	const [isEditClicked, setIsEditClicked] = useState(false);
 
 	const handleIsEditClicked = (event) => {
@@ -11,18 +11,18 @@ function ProfileInput({ label, value, id, placeholder, onChange }) {
 	return (
 		<div className="profile-input-group">
 			<button onClick={handleIsEditClicked} className="profile-edit-btn"><i className="fa-solid fa-pen-to-square"></i></button>
-			<label htmlFor="firstName" className="input-profile-label">{label}:</label>
+			<label htmlFor={id} className="input-profile-label">{label}:</label>
 			{isEditClicked ?
 			<input 
 				id={id}
 				name={id}
-				type="text"
+				type={type}
 				value={value}
 				placeholder={placeholder}
 				onChange={onChange}
 				className="input-profile"
 			/> :
-			<p onClick={handleIsEditClicked}>{value ? value : 'Brak'}</p>
+			<p className="profile-text" onClick={handleIsEditClicked}>{value ? value : 'Brak'}</p>
 			}
 			
 			

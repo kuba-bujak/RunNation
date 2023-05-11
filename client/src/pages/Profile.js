@@ -12,7 +12,11 @@ function Profile() {
 		surname: "",
 		email: "",
 		username: "",
-		courses: []
+		courses: [],
+		avatar: "",
+		rodo: false,
+		newsletter: false,
+		email: ""
 	});
 	const navigate = useNavigate();
 
@@ -32,7 +36,10 @@ function Profile() {
 			surname: user.surname,
 			email: user.email,
 			username: user.username,
-			courses: user.courses
+			courses: user.courses,
+			avatar: user.avatar,
+			rodo: user.rodo,
+			newsletter: user.newsletter,
 		})
 	}
 
@@ -60,9 +67,14 @@ function Profile() {
 		setProfileValues({ ...profileValues, [e.target.name]: e.target.value })
 	}	
 
+	const setAgreements = (key, value) => {
+		setProfileValues({ ...profileValues, [key]: value })
+	}
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		editProfile(profileValues);
+		window.location = '/profil';
 	}
 
 	const editProfile = async (values) => {
@@ -76,20 +88,11 @@ function Profile() {
 
 	return (
 		<div className="profile-container">
-			<SidebarNav changeOption={changeOption} username={profileValues.username}/>
+			<SidebarNav changeOption={changeOption} avatar={profileValues.avatar} username={profileValues.username}/>
 			
-			<ProfileOption profileValues={profileValues} onChange={changeProfile} onSubmit={handleSubmit} />
+			<ProfileOption profileValues={profileValues} onChange={changeProfile} onClick={setAgreements} onSubmit={handleSubmit} />
 			
 			<CoursesOption courses={profileValues.courses}/>
-
-			<div className="profile-content profile-hidden" data-title="image">
-				<header>
-					<h1 className='profile-header'>Zdjęcie</h1>
-				</header>
-				<div className="profile-info">
-					
-				</div>
-			</div>
 
 			<div className="profile-content profile-hidden" data-title="password">
 				<header>
@@ -100,14 +103,6 @@ function Profile() {
 				</div>
 			</div>
 
-			<div className="profile-content profile-hidden" data-title="agreements">
-				<header>
-					<h1 className='profile-header'>Zgody</h1>
-				</header>
-				<div className="profile-info">
-					
-				</div>
-			</div>
 		</div>
 	)
 }
