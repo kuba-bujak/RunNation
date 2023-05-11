@@ -23,7 +23,6 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Hashed Password", hashedPassword);
 
     const user = await User.create({
         username,
@@ -31,8 +30,6 @@ const registerUser = asyncHandler(async (req, res) => {
         role,
         password: hashedPassword
     });
-
-    console.log(`Utworzono użytkownika ${user}`);
 
     if(user) {
         res.status(201).json({ _id: user.id, email: user.email, message: "Utworzono konto" });
@@ -57,7 +54,7 @@ const loginUser = asyncHandler(async (req, res) => {
                 id: user.id
             }
         }, process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '30min' }
+            { expiresIn: '2h' }
         );
         res.status(200).json({ accessToken, message: "Pomyślnie zalogowano" })
     } else {
@@ -70,4 +67,27 @@ const currentUser = asyncHandler(async (req, res) => {
     res.json(req.user);
 });
 
-module.exports = { registerUser, loginUser, currentUser };
+const getProfile = asyncHandler(async (req, res) => {
+    const id = req.user.id;
+    const userProfile = await User.findById(id);
+    if (userProfile) {
+        res.status(200).json(userProfile)
+    } else {
+        res.status(400);
+        throw new Error("Nie udało się pobrać użytkownika z bazy danych");
+    }
+    
+})
+
+const editProfile = asyncHandler(async (req, res) => {
+    const id = req.user.id;
+    const userProfile = await User.findByIdAndUpdate(id, req.body);
+    if (userProfile) {
+        res.status(200).json(userProfile)
+    } else {
+        res.status(400);
+        throw new Error("Nie udało się zaktualizować danych użytkownika w bazie danych");
+    }
+})
+
+module.exports = { registerUser, loginUser, currentUser, getProfile, editProfile };

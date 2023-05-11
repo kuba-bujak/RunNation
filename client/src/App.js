@@ -18,6 +18,7 @@ import WorkingInProgress from "./pages/WorkingInProgress";
 import NotFound from "./NotFound";
 import CourseCreate from "./pages/CourseCreate";
 import CourseEdit from "./pages/CourseEdit";
+import Profile from "./pages/Profile";
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -164,6 +165,7 @@ function App() {
                     <Route path="/kursy/:id/edycja" element={<CourseEdit />} />
                     <Route path="/kontakt" element={<WorkingInProgress />} />
                     <Route path="/galeria" element={<WorkingInProgress />} />
+                    <Route path="/profil" element={<Profile />} />
                     <Route path="/rejestracja" element={<Register />} />
                     <Route path="/logowanie" element={<Login handleLogin={setIsLoged}/>} />
                     <Route path="/wydarzenia/nowe" element={<EventCreate onCreate={createEvent}/>} />
