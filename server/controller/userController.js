@@ -69,7 +69,10 @@ const currentUser = asyncHandler(async (req, res) => {
 
 const getProfile = asyncHandler(async (req, res) => {
     const id = req.user.id;
-    const userProfile = await User.findById(id);
+    const userProfile = await User.findById(id)
+        .populate({
+            path: 'courses'
+        });
     if (userProfile) {
         res.status(200).json(userProfile)
     } else {

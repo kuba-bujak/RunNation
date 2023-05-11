@@ -1052,7 +1052,7 @@ input:invalid[focused='true'] ~ .error-message {
 	border-radius: 100%;
 	justify-self: center;
 	align-self: center;
-	margin: 1rem 0;
+	margin-top: 1rem;
 }
 
 .profile-content {
@@ -1138,3 +1138,16 @@ input:invalid[focused='true'] ~ .error-message {
 	color: #fca311;
 }
 
+.nickname-header {
+	text-align: center;
+	margin: 0.4rem 0 1rem 0;
+}
+
+.course-profile-element {
+	margin-top: 1rem;
+	padding: 0.4rem;
+}
+
+.course-profile-element .course--container .course--header {
+	margin-bottom: 0.6rem;
+}

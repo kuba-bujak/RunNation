@@ -2,37 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SidebarNav from "../components/Profile/SidebarNav";
-import ProfileInput from "../components/Profile/ProfileInput";
+import ProfileOption from "../components/Profile/ProfileOption";
+import CoursesOption from "../components/Profile/CoursesOption";
 const authToken = localStorage.getItem('AuthToken');
 
 function Profile() {
 	const [profileValues, setProfileValues] = useState({
 		firstName: "",
 		surname: "",
-		email: ""
+		email: "",
+		username: "",
+		courses: []
 	});
 	const navigate = useNavigate();
-
-	const profileInputs = [
-		{
-			id: 'firstName',
-			label: 'Imię',
-			value: profileValues.firstName,
-			placeholder: 'Jan'
-		},
-		{
-			id: 'surname',
-			label: 'Nazwisko',
-			value: profileValues.surname,
-			placeholder: 'Kowalski'
-		},
-		{
-			id: 'email',
-			label: 'Email',
-			value: profileValues.email,
-			placeholder: 'jan.kowalski@gmail.com'
-		}
-	]
 
 	const getProfile = async () => {
 		const response = await axios.get('/api/users/profile', {
@@ -49,6 +31,8 @@ function Profile() {
 			firstName: user.firstName,
 			surname: user.surname,
 			email: user.email,
+			username: user.username,
+			courses: user.courses
 		})
 	}
 
@@ -74,7 +58,7 @@ function Profile() {
 
 	const changeProfile = (e) => {
 		setProfileValues({ ...profileValues, [e.target.name]: e.target.value })
-	}
+	}	
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -89,36 +73,14 @@ function Profile() {
 			}
 	  })
 	}
-	
 
 	return (
 		<div className="profile-container">
-			<SidebarNav changeOption={changeOption}/>
-
-			<div className="profile-content profile-shown" data-title="profile">
-				<header>
-					<h1 className='profile-header'>Profil</h1>
-				</header>
-				<form className="profile-info">
-
-					{profileInputs.map((input) => (
-						<ProfileInput onChange={changeProfile} key={input.id} placeholder={input.placeholder} label={input.label} value={input.value} id={input.id} />
-					))}
-					
-					<div className="profile-btns-box">
-						<button className="profile-btn" onClick={handleSubmit}>Zatwierdź</button>
-					</div>
-				</form>
-			</div>
-
-			<div className="profile-content profile-hidden" data-title="courses">
-				<header>
-					<h1 className='profile-header'>Kursy</h1>
-				</header>
-				<div className="profile-info">
-					
-				</div>
-			</div>
+			<SidebarNav changeOption={changeOption} username={profileValues.username}/>
+			
+			<ProfileOption profileValues={profileValues} onChange={changeProfile} onSubmit={handleSubmit} />
+			
+			<CoursesOption courses={profileValues.courses}/>
 
 			<div className="profile-content profile-hidden" data-title="image">
 				<header>

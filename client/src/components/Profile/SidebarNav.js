@@ -1,4 +1,4 @@
-function sidebarNav({ changeOption }) {
+function sidebarNav({ changeOption, username }) {
 
 	const handleClick = (event) => {
 		const target = event.target;
@@ -18,6 +18,7 @@ function sidebarNav({ changeOption }) {
 		<nav className="sidebar-nav">
 				<div className="sidebar-image">
 				</div>
+				<p className="nickname-header">@{username}</p>
 				<ul className="sidebar-nav__list">
 					<li className="sidebar-active sidebar-element" onClick={handleClick} data-title="profile">
 						<i className="fa-solid fa-user"></i>
