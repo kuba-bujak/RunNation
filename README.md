@@ -1,6 +1,6 @@
-# Projekt-Kierunkowy-2
+# RunNation
 
-Projekt-kierunkowy-2 was an application created for graduation project on university.
+RunNation was an application created for graduation project on university.
 It is a type of sports service, where users can register / login.
 
 ## Technologies
