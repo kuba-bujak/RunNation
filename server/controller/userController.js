@@ -93,4 +93,24 @@ const editProfile = asyncHandler(async (req, res) => {
     }
 })
 
-module.exports = { registerUser, loginUser, currentUser, getProfile, editProfile };
+const changePassword = asyncHandler(async (req, res) => {
+    const id = req.user.id;
+    const { password, newPassword } = req.body;
+
+    if (!id) {
+        res.status(400).json({ message: "Brak użytkownika" });
+        throw new Error("Użytkownik wywmagany");
+    }
+
+    const user = await User.findById(id);
+    if (user && (await bcrypt.compare(password, user.password))) {
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        const updatedUser = await User.findByIdAndUpdate(id, { password: hashedPassword });
+        res.status(200).json({ message: "Wprowadzono poprawnie nowe hasło" })
+    } else {
+        res.status(401);
+        throw new Error("Hasło jest niepoprawne");
+    }
+})
+
+module.exports = { registerUser, loginUser, currentUser, getProfile, editProfile, changePassword };

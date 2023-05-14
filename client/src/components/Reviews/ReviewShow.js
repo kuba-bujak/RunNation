@@ -24,7 +24,12 @@ function ReviewShow({ review, onEdit, onDelete, isAdmin }) {
     return (
         <div className="comment-container">
             <div className="comment-container__image">
-                <div className="comment-avatar"></div>
+                {review.author.avatar 
+                    ? 
+                <div className="comment-avatar" style={{ background: `url(${review.author.avatar}) no-repeat center / cover` }}></div>
+                    :
+                <div className="comment-avatar" style={{ background: `url(https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600w-1095249842.jpg)  no-repeat center / cover` }}></div>
+                }
                 <div className="comment-author">
                     @{review.author.username}
                 </div>

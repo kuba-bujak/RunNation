@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SidebarNav from "../components/Profile/SidebarNav";
 import ProfileOption from "../components/Profile/ProfileOption";
 import CoursesOption from "../components/Profile/CoursesOption";
+import ChangePassword from "../components/Profile/ChangePassword";
 const authToken = localStorage.getItem('AuthToken');
 
 function Profile() {
@@ -16,8 +17,14 @@ function Profile() {
 		avatar: "",
 		rodo: false,
 		newsletter: false,
-		email: ""
 	});
+
+	const [passwordInputs, setPasswordInputs] = useState({
+		password: "",
+		newPassword: "",
+		repeatedPassword: ""
+	})
+
 	const navigate = useNavigate();
 
 	const getProfile = async () => {
@@ -71,6 +78,10 @@ function Profile() {
 		setProfileValues({ ...profileValues, [key]: value })
 	}
 
+	const handleChangePassword = (e) => {
+		setPasswordInputs({ ...passwordInputs, [e.target.name]: e.target.value })
+	}
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		editProfile(profileValues);
@@ -86,6 +97,25 @@ function Profile() {
 	  })
 	}
 
+	const handlePasswordSubmit = (event) => {
+		event.preventDefault();
+		changePassword(passwordInputs);
+		setPasswordInputs({
+			password: "",
+			newPassword: "",
+			repeatedPassword: ""
+		})
+	}
+
+	const changePassword = async (values) => {
+		const response = await axios.put('/api/users/password-equality', values, {
+			headers: {
+				 'Authorization': `Bearer ${authToken}`,
+				 'Content-Type': 'application/json'
+			}
+	  })
+	}
+
 	return (
 		<div className="profile-container">
 			<SidebarNav changeOption={changeOption} avatar={profileValues.avatar} username={profileValues.username}/>
@@ -94,14 +124,7 @@ function Profile() {
 			
 			<CoursesOption courses={profileValues.courses}/>
 
-			<div className="profile-content profile-hidden" data-title="password">
-				<header>
-					<h1 className='profile-header'>Hasło</h1>
-				</header>
-				<div className="profile-info">
-					
-				</div>
-			</div>
+			<ChangePassword onSubmit={handlePasswordSubmit} onChange={handleChangePassword} passwordInputs={passwordInputs} />
 
 		</div>
 	)

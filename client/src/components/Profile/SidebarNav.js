@@ -16,8 +16,11 @@ function sidebarNav({ changeOption, username, avatar }) {
 
 	return (
 		<nav className="sidebar-nav">
-				<div className="sidebar-image" style={{ background: `url(${avatar})  no-repeat center / cover` }}>
-				</div>
+				{avatar ?
+					<div className="sidebar-image" style={{ background: `url(${avatar})  no-repeat center / cover` }}></div>
+						:
+					<div className="sidebar-image" style={{ background: `url(https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600w-1095249842.jpg)  no-repeat center / cover` }}></div>}
+				
 				<p className="nickname-header">@{username}</p>
 				<ul className="sidebar-nav__list">
 					<li className="sidebar-active sidebar-element" onClick={handleClick} data-title="profile">
