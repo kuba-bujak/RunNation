@@ -4,8 +4,6 @@ import axios from "axios";
 import FormInput from '../components/FormInput';
 
 function Login({ handleLogin }) {
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [values, setValues] = useState({
         username: "",
@@ -50,7 +48,6 @@ function Login({ handleLogin }) {
             localStorage.setItem("AuthToken", token);
             setMessage(res.data.message);
             setTimeout(() => {
-                // navigate(`/wydarzenia`, { replace: true });
                 window.location = '/profil';
             }, 2000)
         }).catch((err) => {
@@ -60,19 +57,9 @@ function Login({ handleLogin }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // const data = new FormData(event.target);
-        // console.log(Object.fromEntries(data.entries()));
         userLogin(values.username, values.password);
         handleLogin(true);
     } 
-
-    // const handleChangeUsername = (event) => {
-    //     setUsername(event.target.value);
-    // }
-
-    // const handleChangePassword = (event) => {
-    //     setPassword(event.target.value);
-    // }
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
@@ -85,24 +72,6 @@ function Login({ handleLogin }) {
                  <header className="form-header">
                     <h1>Logowanie</h1>
                 </header>
-             
-                    {/* <label htmlFor={'username'} className="input-label">Nazwa użytkownika</label>
-                    <div className="input-group input-group-icon">
-                        <input type="text" name={'username'} placeholder="Nazwa użytkownika" value={username} onChange={handleChangeUsername} id="username" minLength="2" custommaxlength="16" autoFocus required/>
-                        <div className="input-icon"><i className="fa fa-user"></i></div>
-                        <span className="error-icon hidden">
-							<i className="fa-solid fa-circle-exclamation"></i>
-						</span>
-						<span className="check-icon hidden">
-							<i className="fa-solid fa-circle-check"></i>
-						</span>
-						<div className="error-message">{username}</div>
-                    </div>
-                    <label htmlFor={'password'} className="input-label">Hasło</label>
-                    <div className="input-group input-group-icon">
-                        <input type="password" name={'password'} id='password' placeholder="Hasło" value={password} onChange={handleChangePassword} required/>
-                        <div className="input-icon"><i className="fa fa-key"></i></div>
-                    </div> */}
 
                     {inputs.map((input) => (
                         <FormInput 

@@ -4,14 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import FormInput from "../components/FormInput";
 
 function EventEdit({ onEdit }) {
-    // const [title, setTitle] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [image, setImage] = useState('');
-    // const [rating, setRating] = useState('');
-    // const [description, setDescription] = useState('');
-    // const [day, setDay] = useState('');
-    // const [month, setMonth] = useState('');
-    // const [year, setYear] = useState('');
     const [values, setValues] = useState({
         title: "",
         location: "",
@@ -165,14 +157,6 @@ function EventEdit({ onEdit }) {
     }, []);
 
     const setEvent = (event) => {
-        // setTitle(event.title);
-        // setLocation(event.location);
-        // setImage(event.image);
-        // setRating(event.rating);
-        // setDescription(event.description);
-        // setDay(new Date(event.date).getDay() + 1);
-        // setMonth(new Date(event.date).getMonth() + 1);
-        // setYear(new Date(event.date).getFullYear());
         let day = new Date(event.date).getDay() + 1;
         let month = new Date(event.date).getMonth() + 1;
         if (day < 10) day = `0${day}`;
@@ -222,32 +206,6 @@ function EventEdit({ onEdit }) {
         }, 1000);
     }
 
-    // const handleChangeTitle = (event) => {
-    //     setTitle(event.target.value)
-    // }
-    // const handleChangeLocation = (event) => {
-    //     setLocation(event.target.value)
-    // }
-    // const handleChangeImage = (event) => {
-    //     setImage(event.target.value)
-    // }
-    // const handleChangeRating = (event) => {
-    //     setRating(event.target.value)
-    // }
-    // const handleChangeDescription = (event) => {
-    //     setDescription(event.target.value)
-    // }
-
-    // const handleChangeDay = (event) => {
-    //     setDay(event.target.value)
-    // }
-    // const handleChangeMonth = (event) => {
-    //     setMonth(event.target.value)
-    // }
-    // const handleChangeYear = (event) => {
-    //     setYear(event.target.value)
-    // }
-
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
     }
@@ -264,55 +222,6 @@ function EventEdit({ onEdit }) {
                  <header className="form-header">
                     <h1>Edytuj <br />#{values.title}</h1>
                 </header>
-                {/* <div className="row">
-                <h4>Informacje ogólne</h4>
-                <div className="input-group input-group-icon">
-                    <input type="text" placeholder="Tytuł" value={values.title} onChange={onChange} required/>
-                    <div className="input-icon"><i className="fa fa-user"></i></div>
-                </div>
-                <div className="input-group input-group-icon">
-                    <input type="text" placeholder="Lokalizacja" value={values.location} onChange={onChange} required/>
-                    <div className="input-icon"><i className="fa-solid fa-location-dot"></i></div>
-                </div>
-                <div className="input-group input-group-icon">
-                    <textarea placeholder="Opis" rows={5} value={values.description} onChange={onChange} required></textarea>
-                    <div className="input-icon"><i className="fa-solid fa-message"></i></div>
-                </div>
-                </div>
-                <div className="row">
-                <div className="col-half">
-                    <h4>Termin</h4>
-                    <div className="input-group">
-                    <div className="col-third">
-                        <input type="text" placeholder="DD" value={values.day} onChange={onChange} required/>
-                    </div>
-                    <div className="col-third">
-                        <input type="text" placeholder="MM" value={values.month} onChange={onChange} required/>
-                    </div>
-                    <div className="col-third">
-                        <input type="text" placeholder="YYYY" value={values.year} onChange={onChange} required/>
-                    </div>
-                    </div>
-                </div>
-                <div className="col-half">
-                    <h4>Ranga</h4>
-                    <div className="input-group">
-                    <select onChange={onChange} value={values.rating} required>
-                        <option value={0}>II</option>
-                        <option value={1}>I</option>
-                        <option value={2}>M</option>
-                        <option value={3}>MM</option>
-                    </select>
-                    </div>
-                </div>
-                </div>
-                <div className="row">
-                <h4>Zdjęcie</h4>
-                <div className="input-group input-group-icon">
-                    <input type="url" placeholder="Zdjęcie" value={values.image} onChange={onChange} />
-                    <div className="input-icon"><i className="fa-solid fa-image"></i></div>
-                </div>
-                </div> */}
                 {inputs.map((input) => (
                         <FormInput 
                             key={input.id} 

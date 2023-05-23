@@ -1,23 +1,20 @@
-FROM node:16
+# Use the Node.js base image
+FROM node:alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+# Set the working directory
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci--only=production
+# Install dependencies
+RUN npm ci
 
-# Bundle app source
+# Copy the rest of the server app files
 COPY . .
 
+# Expose port 3001
 EXPOSE 3001
-CMD [ "node", "server.js" ]
 
-# docker build . -t runnation-backend
-# docker run -p 49160:3001 -d runnation-backend
-# docker push kubabujak/yelpcamp:yelpcamp ??????
+# Start the server app
+CMD ["npm", "start"]

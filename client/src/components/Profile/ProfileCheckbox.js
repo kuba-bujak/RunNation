@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function ProfileCheckbox({ label, value, id, placeholder, onClick }) {
 	const [isAgreed, setIsAgreed] = useState(false);

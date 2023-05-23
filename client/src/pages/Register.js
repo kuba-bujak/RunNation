@@ -4,11 +4,6 @@ import axios from 'axios';
 import FormInput from '../components/FormInput';
 
 function Register() {
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [role, setRole] = useState('');
-    // const [repeatPassword, setRepeatPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const [values, setValues] = useState({
@@ -109,31 +104,8 @@ function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // const data = new FormData(event.target);
-        // console.log(Object.fromEntries(data.entries()));
-        // console.log(values);
         createUser(values.username, values.email, values.role, values.password);
     } 
-
-    // const handleChangeUsername = (event) => {
-    //     setUsername(event.target.value);
-    // }
-
-    // const handleChangePassword = (event) => {
-    //     setPassword(event.target.value);
-    // }
-
-    // const handleChangeEmail = (event) => {
-    //     setEmail(event.target.value);
-    // }
-
-    // const handleChangeRole = (event) => {
-    //     setRole(event.target.value)
-    // }
-
-    // const handleChangeRepeatedPassword = (event) => {
-    //     setRepeatPassword(event.target.value);
-    // }
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
@@ -148,38 +120,6 @@ function Register() {
                  <header className="form-header">
                     <h1>Rejestracja</h1>
                 </header>
-                {/* <div className="row">
-                    <h4>Nazwa użytkownika</h4>
-                    <div className="input-group input-group-icon">
-                        <input type="text" placeholder="Nazwa użytkownika" value={username} onChange={handleChangeUsername} required/>
-                        <div className="input-icon"><i className="fa fa-user"></i></div>
-                    </div>
-                    <h4>Adres email</h4>
-                    <div className="input-group input-group-icon">
-                        <input type="text" placeholder="Adres email" value={email} onChange={handleChangeEmail} required/>
-                        <div className="input-icon"><i className="fa fa-envelope"></i></div>
-                    </div>
-                    <div className="row">
-                        <h4>Stanowisko</h4>
-                        <div className="input-group">
-                            <select required value={role} onChange={handleChangeRole}>
-                                <option value={'zawodnik'} selected>Zawodnik</option>
-                                <option value={'trener'}>Trener</option>
-                                <option value={'kibic'}>Kibic</option>
-                            </select>
-                        </div>
-                    </div>
-                    <h4>Hasło</h4>
-                    <div className="input-group input-group-icon">
-                        <input type="password" placeholder="Hasło" value={password} onChange={handleChangePassword} required/>
-                        <div className="input-icon"><i className="fa fa-key"></i></div>
-                    </div>
-                    <h4>Powtórz hasło</h4>
-                    <div className="input-group input-group-icon">
-                        <input type="password" placeholder="Powtórz hasło" value={repeatPassword} onChange={handleChangeRepeatedPassword} required/>
-                        <div className="input-icon"><i className="fa fa-key"></i></div>
-                    </div>
-                </div> */}
 
                     {inputs.map((input) => (
                         <FormInput 

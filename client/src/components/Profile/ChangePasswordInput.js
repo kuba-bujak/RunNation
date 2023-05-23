@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function ChangePasswordInput({ label, value, id, onChange }) {
 
 	return (

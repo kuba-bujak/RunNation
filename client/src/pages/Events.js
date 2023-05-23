@@ -53,18 +53,12 @@ function Events({ events, oldEvents }) {
                     <h1 className='event-header'>Wydarzenia wkrótce</h1>
                 </header>
                 <EventsList events={events} />
-                {/* <Link to={{}} className='btn-secondary events-btn shadow'>
-                    Zobacz więcej
-                </Link> */}
             </div>
             <div className='event-section'>
                 <header>
                     <h1 className='event-header'>Archiwum wydarzeń</h1>
                 </header>
                 <EventsList events={oldEvents.reverse()} />
-                {/* <Link to={{}} className='btn-secondary events-btn shadow'>
-                    Zobacz więcej
-                </Link> */}
             </div>
         </div>
     )

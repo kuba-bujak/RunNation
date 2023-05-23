@@ -4,10 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Events from "./pages/Events";
 import Courses from "./pages/Courses";
-import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
 import Register from "./pages/Register";
 import EventDetails from "./components/Events/EventDetails";

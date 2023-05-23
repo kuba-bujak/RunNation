@@ -90,6 +90,12 @@ const editCourse = asyncHandler(async (req, res) => {
 const deleteCourse = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const deletedCourse = await Course.findByIdAndDelete(id);
+    for (let user of deletedCourse.users) {
+        const updatedUser = await User.updateOne(
+            { _id: user },
+            { $pull: { courses: id } }
+        );
+    }
     if (deleteCourse) {
         res.status(200).json({ message: "Pomyślnie usunięto" })
     } else {

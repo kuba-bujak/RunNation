@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function ProfileInput({ label, value, id, placeholder, onChange, type }) {
 	const [isEditClicked, setIsEditClicked] = useState(false);

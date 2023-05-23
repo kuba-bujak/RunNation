@@ -3,10 +3,12 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 const cors = require('cors');
+const path = require('path');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 mongoose.set('strictQuery', true);
 
 mongoose.connect(process.env.DATABASE_URL, {
